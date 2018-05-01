@@ -42,7 +42,7 @@ public class MiniProject extends Application {
         Parent root = loader.load();
         
         Scene scene = new Scene(root);
-        scene.setFill(Color.BISQUE);
+//        scene.setFill(Color.BISQUE);
         scene2 = scene;
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.setScene(scene);

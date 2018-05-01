@@ -5,23 +5,22 @@
  */
 package controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import view.MiniProject;
+import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
  *
  * @author Touch-Me
  */
-public class LeftDrawerController implements Initializable {
+
+
+public class StockScreenController implements Initializable {
+    @FXML
+    BorderPane stockBorderPane;
 
     /**
      * Initializes the controller class.
@@ -29,11 +28,7 @@ public class LeftDrawerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        stockBorderPane.getChildren().add(LoginScreenController.btnFullScreen);
     }    
     
-    @FXML
-    public void goToStock(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/view/StockScreen.fxml"));
-        MiniProject.stage.setScene(new Scene(root));
-    }
 }

@@ -5,23 +5,16 @@
  */
 package controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import view.MiniProject;
 
 /**
  * FXML Controller class
  *
  * @author Touch-Me
  */
-public class LeftDrawerController implements Initializable {
+public class RightDrawerController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -31,9 +24,4 @@ public class LeftDrawerController implements Initializable {
         // TODO
     }    
     
-    @FXML
-    public void goToStock(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/view/StockScreen.fxml"));
-        MiniProject.stage.setScene(new Scene(root));
-    }
 }

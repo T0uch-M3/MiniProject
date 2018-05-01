@@ -1,49 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginScreenController">
    <center>
-      <GridPane prefHeight="700.0" prefWidth="863.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="700.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" prefWidth="400.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" prefWidth="400.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" prefWidth="400.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox id="vbL" alignment="CENTER" prefHeight="700.0" prefWidth="100.0" styleClass="up" stylesheets="@StyleSheet.css">
+            <VBox id="vbL" fx:id="loginLeft" alignment="CENTER" prefHeight="700.0" prefWidth="100.0" stylesheets="@StyleSheet.css">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
                <children>
-                  <JFXDrawer fx:id="drawLeft" defaultDrawerSize="900.0" direction="TOP" onMouseClicked="#vBoxLShow" prefHeight="421.0" prefWidth="368.0" VBox.vgrow="NEVER" />
+                  <JFXDrawer fx:id="drawLeft" defaultDrawerSize="900.0" direction="TOP" onMouseClicked="#drawerStatL" overLayVisible="false" prefHeight="421.0" prefWidth="368.0" stylesheets="@StyleSheet.css" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin></JFXDrawer>
                </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </VBox>
-            <VBox id="vbR" alignment="CENTER" prefHeight="700.0" prefWidth="100.0" stylesheets="@StyleSheet.css" GridPane.columnIndex="2">
+            <VBox id="vbR" fx:id="loginRight" alignment="CENTER" prefHeight="700.0" prefWidth="100.0" spacing="90.0" stylesheets="@StyleSheet.css" GridPane.columnIndex="2">
                <children>
-                  <JFXDrawer fx:id="drawRight" defaultDrawerSize="700.0" direction="TOP" onMouseClicked="#colorMeth" prefHeight="700.0" prefWidth="413.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#goFullScreen" text="Full " />
-                     </children>
-                  </JFXDrawer>
+                  <JFXDrawer fx:id="drawRight" defaultDrawerSize="900.0" direction="TOP" onMouseClicked="#drawerStatR" overLayVisible="false" prefHeight="421.0" prefWidth="368.0" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="57.0" />
+                     </VBox.margin></JFXDrawer>
+                  <JFXButton fx:id="btnTest" onAction="#goFullScreen" text="Full">
+                     <VBox.margin>
+                        <Insets bottom="-80.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
                </children>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
             </VBox>
-            <HBox id="hbM" alignment="CENTER" prefHeight="700.0" prefWidth="100.0" stylesheets="@StyleSheet.css" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="ALWAYS">
+            <VBox id="vbM" fx:id="loginMiddle" alignment="CENTER" prefHeight="700.0" prefWidth="100.0" stylesheets="@StyleSheet.css" GridPane.columnIndex="1">
                <children>
-                  <JFXDrawer fx:id="drawMiddle" defaultDrawerSize="700.0" direction="TOP" onMouseClicked="#drawClick" overLayVisible="false" prefHeight="700.0" prefWidth="413.0" HBox.hgrow="ALWAYS" />
+                  <JFXDrawer fx:id="drawMiddle" defaultDrawerSize="900.0" direction="TOP" onMouseClicked="#drawerStatM" overLayVisible="false" prefHeight="421.0" prefWidth="368.0" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin></JFXDrawer>
                </children>
-            </HBox>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </VBox>
          </children>
       </GridPane>
    </center>
