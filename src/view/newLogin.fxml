@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewLoginController">
+   <center>
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: coral;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXDrawer fx:id="upDrawer" defaultDrawerSize="1000.0" direction="TOP" layoutX="-65.0" layoutY="-428.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#upDrawerReaction" onMousePressed="#cord" prefHeight="1030.0" prefWidth="2505.0" rotate="29.7" />
+            <JFXDrawer fx:id="downDrawer" defaultDrawerSize="1000.0" direction="BOTTOM" layoutX="-715.0" layoutY="411.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#downDrawerReaction" prefHeight="1019.0" prefWidth="2592.0" rotate="29.7" />
+            <Pane fx:id="tori" layoutX="1091.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="269.0" prefWidth="109.0" style="-fx-background-color: silver;" />
+            <Pane fx:id="akai" layoutX="14.0" layoutY="461.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="239.0" prefWidth="69.0" style="-fx-background-color: grey;" />
+            <JFXButton fx:id="btnFullScreen" layoutX="1160.0" layoutY="665.0" onAction="#goFullScreen" prefHeight="35.0" prefWidth="40.0" text="Full" />
+            <VBox fx:id="downVbox" layoutX="358.0" layoutY="346.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="240.0" spacing="25.0" style="-fx-background-color: pink; -fx-background-radius: 8px;">
+               <children>
+                  <JFXTextField focusColor="#ff672b" prefHeight="25.0" prefWidth="208.0" promptText="Name" unFocusColor="#ff672b">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXPasswordField focusColor="#ff672b" prefHeight="31.0" prefWidth="195.0" promptText="Password" unFocusColor="#ff672b">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXPasswordField>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+            <VBox fx:id="upVbox" layoutX="602.0" layoutY="192.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="240.0" spacing="25.0" style="-fx-background-color: skyblue; -fx-background-radius: 8px;">
+               <children>
+                  <JFXTextField focusColor="#ff672b" prefHeight="25.0" prefWidth="208.0" promptText="Name" unFocusColor="#ff672b">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXPasswordField focusColor="#ff672b" onKeyPressed="#nextScreen" prefHeight="31.0" prefWidth="195.0" promptText="Password" unFocusColor="#ff672b">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXPasswordField>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+            <ImageView fitHeight="600.0" fitWidth="250.0" layoutX="227.0" layoutY="330.0" rotate="-90.0">
+               <image>
+                  <Image url="@../image/stocksNew.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-0.38" hue="0.33" saturation="0.07" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="600.0" fitWidth="250.0" layoutX="639.0" layoutY="-206.0" rotate="-90.0">
+               <image>
+                  <Image url="@../image/sellNew.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

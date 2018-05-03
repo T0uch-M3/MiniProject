@@ -17,17 +17,16 @@ and open the template in the editor.
     -fx-background-size: stretch;
     -fx-background-position: center center;
     -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 9.0, 0.9, 0.0,1.5);
-/*    -fx-effect: innershadow(three-pass-box);*/
-    
+    /*    -fx-effect: innershadow(three-pass-box);*/
+
 }
 #vbL{
     -fx-background-image: url("/image/advance2.png");
     /*-fx-background-repeat: stretch;*/
     -fx-background-color: whitesmoke;
-    -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 9.0, 0.9, 0.0,1.5);
     -fx-background-size: stretch;
     -fx-background-position: center center;
-    
+
 }
 #vbR{
     -fx-background-image: url("/image/stocks2.png");
@@ -40,21 +39,30 @@ and open the template in the editor.
 
 .vbL2{
     -fx-background-color: red;
-    
+
 }
 .up{
     -fx-background-color: -fx-first;
     -fx-background-radius: 4.0;
     -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 5.0, 0.7, 0.0,1.5);
-     /*-fx-effect: dropshadow(gaussian , red, 10, 0.7 , 0.0, 1.5);*/
+    /*-fx-effect: dropshadow(gaussian , red, 10, 0.7 , 0.0, 1.5);*/
     /*-fx-padding: 16 16 16 16;*/
 }
 .draw{
     -fx-background-color: -fx-first;
+
     -fx-background-radius: 4.0;
     -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 5.0, 0.7, 0.0,1.5);
     -fx-padding: 16 16 16 16;
 }
+.model{
+    -fx-background-color : rgba(0,1,0,0.5);
+}
+.buttons{
+    -fx-background-color: #e0e0e0;
+    /*-fx-border-color: grey;*/
+}
 /*.root{
+    -fx-background-color: 
     -fx-background-image: url("pic.jpg");
 }*/

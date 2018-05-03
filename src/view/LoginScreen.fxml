@@ -42,7 +42,7 @@
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="57.0" />
                      </VBox.margin></JFXDrawer>
-                  <JFXButton fx:id="btnTest" onAction="#goFullScreen" text="Full">
+                  <JFXButton fx:id="btnFullScreen" onAction="#goFullScreen" text="Full">
                      <VBox.margin>
                         <Insets bottom="-80.0" top="20.0" />
                      </VBox.margin>

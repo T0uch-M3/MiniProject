@@ -37,7 +37,7 @@ public class MiniProject extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("newLogin.fxml"));
 //      loader.setController(new LoginScreenController());
         Parent root = loader.load();
         

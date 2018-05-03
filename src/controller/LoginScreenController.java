@@ -47,7 +47,7 @@ public class LoginScreenController implements Initializable {
     @FXML
     VBox vBoxR, loginRight;
     @FXML
-    public static JFXButton btnFullScreen;
+    public JFXButton btnFullScreen;
 //    StackPane drawVb;
     boolean fullScreen = false;
     boolean visibleL = false;
