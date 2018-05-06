@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -42,7 +43,10 @@ public class NewLoginController implements Initializable {
     Pane akai, tori;
     @FXML
     VBox upVbox, downVbox;
-    boolean openStat = false, fullScreen = false;
+    @FXML
+    ImageView stocksImg, sellImg;
+    boolean openStat = false;
+    public static boolean fullScreen = false;
     double angle;
     Double lastX, lastY;
 
@@ -123,11 +127,6 @@ public class NewLoginController implements Initializable {
     }
 
     @FXML
-    public void goFull(ActionEvent event) {
-        MiniProject.stage.setFullScreen(true);
-    }
-
-    @FXML
     public void changeSize(ActionEvent event) {
     }
 
@@ -186,21 +185,56 @@ public class NewLoginController implements Initializable {
 
             upVbox.setPrefSize(320, 165);
             downVbox.setPrefSize(320, 165);
-            //**********************************************
+            //********************Image view*********************
+            resizingIVUp(true);
         } else {
             MiniProject.stage.setFullScreen(false);
             fullScreen = false;
+            resizingIVUp(false);
+            
         }
     }
 
+    public void resizingIVUp(boolean bool){
+        if(bool){
+              sellImg.setLayoutX(910);
+            sellImg.setLayoutY(-320);
+            sellImg.setFitWidth(400);
+            sellImg.setFitHeight(900);
+            
+            stocksImg.setLayoutX(330);
+            stocksImg.setLayoutY(510);
+            stocksImg.setFitWidth(400);
+            stocksImg.setFitHeight(900);
+        }else{
+            sellImg.setLayoutX(639);
+            sellImg.setLayoutY(-206);
+            sellImg.setFitWidth(250);
+            sellImg.setFitHeight(600);
+            
+            stocksImg.setLayoutX(227);
+            stocksImg.setLayoutY(330);
+            stocksImg.setFitWidth(250);
+            stocksImg.setFitHeight(600);
+        }
+    }
     @FXML
-    public void nextScreen(KeyEvent event) throws IOException {
+    public void goToStock(KeyEvent event) throws IOException {
         if (event.getCode().equals(KeyCode.ENTER)) {
             Parent root = FXMLLoader.load(getClass().getResource("/view/StockScreen.fxml"));
             MiniProject.stage.setScene(new Scene(root));
         }
 
     }
+    @FXML
+    public void goToSell(KeyEvent event) throws IOException {
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            Parent root = FXMLLoader.load(getClass().getResource("/view/SellScreen.fxml"));
+            MiniProject.stage.setScene(new Scene(root));
+        }
+
+    }
+
 
     @FXML
     public void cord(MouseEvent event) {
