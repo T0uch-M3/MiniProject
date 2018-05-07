@@ -5,7 +5,12 @@
  */
 package view;
 
+
+import controller.FirstModel;
 import controller.LoginScreenController;
+import controller.OptionDropDownController;
+import controller.StockScreenController;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javafx.application.Application;
@@ -15,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 
 /**
  *
@@ -30,30 +36,51 @@ public class MiniProject extends Application {
     public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static double screenWidth = screenSize.getWidth();
     public static double screenHeight = screenSize.getHeight();
+    public static FirstModel fm = new FirstModel();
     public static void main(String[] args) {
+        
         launch();
     }
         
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
-        stage = primaryStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StockScreen.fxml"));
-//      loader.setController(new LoginScreenController());
-        Parent root = loader.load();
         
-        Scene scene = new Scene(root);
-//        scene.setFill(Color.BISQUE);
-        scene2 = scene;
-        primaryStage.initStyle(StageStyle.UTILITY);
-        primaryStage.setScene(scene);
-        primaryStage.setWidth(1200);
-        primaryStage.setHeight(720);
-        primaryStage.setFullScreenExitHint("");
-        primaryStage.setResizable(false);
+
+        FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("StockScreen.fxml"));
+//        firstLoader.setControllerFactory(controllerFactory);
+        firstLoader.setController(new StockScreenController(fm));
+        Parent firstUI = firstLoader.load();
+        StockScreenController controller = firstLoader.getController();
+        
+        Scene sc = new Scene(firstUI);
+        primaryStage.setScene(sc);
         primaryStage.show();
         
+//        FXMLLoader secondLoader = new FXMLLoader(getClass().getResource("OptionDropDown.fxml"));
+////        secondLoader.setControllerFactory(controllerFactory);
+//        secondLoader.setController(new OptionDropDownController(fm));
+//        Parent secondtUI = (Parent)secondLoader.load();
+//        
         
         
+        
+        
+        stage = primaryStage;
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("StockScreen.fxml"));
+//      loader.setController(new LoginScreenController());
+//        Parent root = loader.load();
+        
+//        Scene scene = new Scene(root);
+//        scene.setFill(Color.BISQUE);
+//        scene2 = scene;
+//        primaryStage.initStyle(StageStyle.UTILITY);
+//        primaryStage.setScene(scene);
+//        primaryStage.setWidth(1200);
+//        primaryStage.setHeight(720);
+//        primaryStage.setFullScreenExitHint("");
+//        primaryStage.setResizable(false);
+//        primaryStage.show();
     }
     
 }

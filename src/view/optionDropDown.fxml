@@ -4,14 +4,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="vboxOption" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="180.0" rotate="180.0" style="-fx-background-color: #3A3F53;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OptionDropDownController">
+<VBox fx:id="vboxOption" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="180.0" rotate="180.0" style="-fx-background-color: #3A3F53;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXButton prefHeight="25.0" prefWidth="229.0" text="Button" textFill="#dddddd" />
       <JFXButton prefHeight="25.0" prefWidth="229.0" text="Button" textFill="#dddddd" />
       <HBox prefHeight="30.0" prefWidth="180.0">
          <children>
-            <JFXButton prefHeight="25.0" prefWidth="229.0" text="AR" textFill="#dddddd" />
-            <JFXButton prefHeight="25.0" prefWidth="229.0" text="EN" textFill="#dddddd" />
+            <JFXButton onAction="#toArabic" prefHeight="25.0" prefWidth="229.0" text="AR" textFill="#dddddd" />
+            <JFXButton onAction="#toEnglish" prefHeight="25.0" prefWidth="229.0" text="EN" textFill="#dddddd" />
          </children>
       </HBox>
    </children>

@@ -19,18 +19,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -67,15 +63,27 @@ public class StockScreenController implements Initializable {
     JFXButton btnFullScreen, dropDownBtn;
     @FXML
     HBox initialPos, initialPosFSBtn, topHbox;
+    @FXML
+     public JFXButton testLabel;
     boolean modelShow = false;
     boolean dropDownMenu = false;
     public Object lastSelectedButton;
-
+    
+    private final FirstModel fm;
     /**
      * Initializes the controller class.
      */
+    public StockScreenController(FirstModel fm){
+        this.fm = fm;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        fm.textProperty().addListener((obs, oldText, newText)->
+        testLabel.setText(newText));
+        
+        
         
         
         optionDrawer.setVisible(false);
@@ -95,28 +103,31 @@ public class StockScreenController implements Initializable {
 
 //        optionDrawer.close();
         try {
-            optionVB = FXMLLoader.load(getClass().getResource("/view/optionDropDown.fxml"));
+            FXMLLoader secondLoader = new FXMLLoader(getClass().getResource("/view/OptionDropDown.fxml"));
+            secondLoader.setController(new OptionDropDownController(fm));
+            optionVB = secondLoader.load();
+//            optionVB = FXMLLoader.load(getClass().getResource("/view/optionDropDown.fxml"));
             optionDrawer.setSidePane(optionVB);
             optionDrawer.open();
         } catch (IOException ex) {
             Logger.getLogger(StockScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        MiniProject.stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            optionDrawer.setPrefSize(180, 42);
-            optionDrawer.setMaxSize(180, 42);
-            
-            optionDrawer.setLayoutX(995);
-            
-             MiniProject.stage.setFullScreen(false);
-            NewLoginController.fullScreen = false;
-            resizeUp(tilePane1, false);
-            resizeUp(tilePane2, false);
-            resizeUp(tilePane3, false);
-
-            Insets ins = new Insets(0, 10, 0, 0);
-            initialPos.setPadding(ins);
-        });
+//        MiniProject.stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+//            optionDrawer.setPrefSize(180, 42);
+//            optionDrawer.setMaxSize(180, 42);
+//            
+//            optionDrawer.setLayoutX(995);
+//            
+//             MiniProject.stage.setFullScreen(false);
+//            NewLoginController.fullScreen = false;
+//            resizeUp(tilePane1, false);
+//            resizeUp(tilePane2, false);
+//            resizeUp(tilePane3, false);
+//
+//            Insets ins = new Insets(0, 10, 0, 0);
+//            initialPos.setPadding(ins);
+//        });
     }
 
     @FXML
@@ -291,35 +302,6 @@ public class StockScreenController implements Initializable {
         timeline2.play();
         dropDownMenu=false;
         }
-//        if (inOldPostion) {//pressing the button while in normal screen
-//            dropDownBg.getChildren().add(dropDownBtn);
-//            dropDownBtn.setLayoutX(1129);
-//            inOldPostion = false;
-//            dropDownBg.toFront();
-//            topHbox.toFront();
-//            //******the fullscreen button new position
-//            dropDownBg.getChildren().add(btnFullScreen);
-//            btnFullScreen.setLayoutX(1160);
-//            btnFullScreen.setLayoutY(665);
-//            //*******************************************
-//        } else {
-//            initialPos.getChildren().add(dropDownBtn);
-//            inOldPostion = true;
-//            dropDownBg.toBack();
-//            initialPosFSBtn.getChildren().add(btnFullScreen);
-//        }
-//        if(NewLoginController.fullScreen){//pressing the button while on full screen
-//            dropDownBtn.setLayoutX(1845);
-//            btnFullScreen.setLayoutX(1880);
-//            btnFullScreen.setLayoutY(1060);
-//            
-//            
-//            
-//            
-//            
-//            
-//            
-//        }
         if (optionDrawer.isHidden()) {
             optionDrawer.open();
         } else {
@@ -327,4 +309,9 @@ public class StockScreenController implements Initializable {
         }
     }
 
+    @FXML
+    public void goToStats(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/view/StatisticScreen.fxml"));
+        MiniProject.stage.setScene(new Scene(root));
+    }
 }

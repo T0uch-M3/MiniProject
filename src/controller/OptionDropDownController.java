@@ -8,6 +8,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -20,12 +21,28 @@ public class OptionDropDownController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    public static boolean languageEng = true;
+    private final FirstModel fm;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }   
     public void checkIt(ActionEvent event){
-        testClass.getInstance().setChecked(true);
+        
+    }
+    @FXML
+    public void toArabic(ActionEvent event){
+//        System.out.println("ARRRRR");
+//        StockScreenController p = new StockScreenController();
+//        p.testLabel.setText("AAAAAA");
+        fm.setText("اختبار");
+    }
+    @FXML
+    public void toEnglish(ActionEvent event){
+        fm.setText("Test");
+    }
+    public OptionDropDownController(FirstModel fm){
+        this.fm = fm;
     }
     
 }

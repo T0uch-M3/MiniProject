@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
-<?import com.jfoenix.controls.JFXTogglePane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -20,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StockScreenController">
+<StackPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="dropDownBg" onMouseClicked="#sendBackOptions" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -569,7 +568,7 @@
                               <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                            </padding>
                         </VBox>
-                        <HBox fx:id="initialPosFSBtn" alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="400.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <HBox fx:id="initialPosFSBtn" alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="400.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                            <children>
                               <JFXButton fx:id="btnFullScreen" onAction="#goFullScreen" prefHeight="25.0" prefWidth="37.0" text="Full" />
                            </children>
@@ -585,42 +584,26 @@
       </BorderPane>
       <HBox fx:id="topHbox" maxHeight="45.0" minHeight="40.0" prefHeight="40.0" prefWidth="1200.0" spacing="3.0" style="-fx-background-color: #345466;" StackPane.alignment="TOP_CENTER">
          <children>
-            <JFXTogglePane prefHeight="58.0" prefWidth="115.0" style="-fx-background-color: #1f323d;">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="108.0" text="Stock" textFill="#eeeeee">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-               </children>
-            </JFXTogglePane>
-            <JFXTogglePane prefHeight="58.0" prefWidth="115.0" style="-fx-background-color: #1f323d;">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="108.0" text="Stat" textFill="#eeeeee">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-               </children>
-            </JFXTogglePane>
-            <JFXTogglePane prefHeight="58.0" prefWidth="115.0" style="-fx-background-color: #1f323d;">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="108.0" text="Advance" textFill="#eeeeee">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-               </children>
-            </JFXTogglePane>
-            <JFXTogglePane prefHeight="58.0" prefWidth="115.0" style="-fx-background-color: #1f323d;">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="108.0" text="..." textFill="#eeeeee">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-               </children>
-            </JFXTogglePane>
+            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" ripplerFill="#262d46" style="-fx-background-color: #262d46;" text="Stock" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </JFXButton>
+            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#goToStats" prefHeight="85.0" prefWidth="115.0" text="Stats" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </JFXButton>
+            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Advance" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="testLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Test" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </JFXButton>
             <HBox fx:id="initialPos" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets />
