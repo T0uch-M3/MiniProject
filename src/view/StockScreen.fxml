@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -30,48 +32,6 @@
          <center>
             <StackPane BorderPane.alignment="CENTER">
                <children>
-                  <GridPane fx:id="modelBg" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#sendBack" prefHeight="571.0" prefWidth="1050.0" styleClass="model" stylesheets="@StyleSheet.css" visible="false" StackPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <VBox fx:id="modelLikePane" alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: whitesmoke;" styleClass="up" stylesheets="@StyleSheet.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <children>
-                              <HBox alignment="BOTTOM_CENTER" prefHeight="16.0" prefWidth="380.0" spacing="20.0" style="-fx-background-color: bisque;">
-                                 <children>
-                                    <JFXButton style="-fx-background-color: aquamarine;" text="&lt;">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="87.0" text="Qte" />
-                                    <JFXButton style="-fx-background-color: aquamarine;" text="&gt;">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </JFXButton>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="BOTTOM_RIGHT" prefHeight="10.0" prefWidth="380.0" style="-fx-background-color: azure;">
-                                 <children>
-                                    <ImageView fitHeight="20.0" fitWidth="24.0" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../image/cancel%20(1)%20-%20Copy.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </GridPane>
                   <GridPane fx:id="gridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #CCE6FF;" stylesheets="@StyleSheet.css">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -111,97 +71,10 @@
                                        <children>
                                           <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="ButtonTest" textFill="#363232">
                                              <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
+                                                <ImageView>
                                                    <image>
-                                                      <Image url="@../image/picV1.png" />
+                                                      <Image url="@../image/icons8_Women%60s_Shoe_64px.png" />
                                                    </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test2" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test3" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test4" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test5" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="trst6" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test7" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test8" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
                                                 </ImageView>
                                              </graphic>
                                           </JFXButton>
@@ -248,146 +121,12 @@
                                        <padding>
                                           <Insets left="6.0" right="5.0" top="20.0" />
                                        </padding>
-                                       <children>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#openProp" prefWidth="109.0" styleClass="buttons" text="test9" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="65.0" fitWidth="94.0">
-                                                   <image>
-                                                      <Image url="@../image/picV1.png" />
-                                                   </image>
-                                                   <effect>
-                                                      <ColorAdjust brightness="0.69" contrast="-0.1" hue="-0.5" saturation="-1.0" />
-                                                   </effect>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                       </children>
                                     </TilePane>
                                  </content>
                               </ScrollPane>
                               <HBox alignment="CENTER" prefHeight="41.0" prefWidth="350.0">
                                  <children>
-                                    <JFXButton prefWidth="40.0" style="-fx-background-color: #6acaff;" text="+" textFill="WHITE" />
+                                    <JFXButton onAction="#addWomen" prefWidth="40.0" style="-fx-background-color: #6acaff;" text="+" textFill="WHITE" />
                                  </children>
                               </HBox>
                            </children>
@@ -560,7 +299,7 @@
                               </ScrollPane>
                               <HBox alignment="CENTER" prefHeight="0.0" prefWidth="350.0">
                                  <children>
-                                    <JFXButton prefWidth="40.0" style="-fx-background-color: #6acaff;" text="+" textFill="WHITE" />
+                                    <JFXButton onAction="#addKids" prefWidth="40.0" style="-fx-background-color: #6acaff;" text="+" textFill="WHITE" />
                                  </children>
                               </HBox>
                            </children>
@@ -578,13 +317,120 @@
                         </HBox>
                      </children>
                   </GridPane>
+                  <GridPane fx:id="modelBg" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#sendBackAction" prefHeight="571.0" prefWidth="1050.0" styleClass="model" stylesheets="@StyleSheet.css" StackPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <VBox fx:id="addPane" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="50.0" prefHeight="250.0" prefWidth="50.0" spacing="20.0" stylesheets="@StyleSheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="3" GridPane.valignment="CENTER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <children>
+                              <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#stayPut" prefHeight="601.0" prefWidth="342.0" styleClass="up2" stylesheets="@StyleSheet.css" VBox.vgrow="ALWAYS">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="179.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="161.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="47.0" minHeight="0.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="300.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <HBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: red;" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="310.0" spacing="6.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="340.0" text="Shoe's Name" VBox.vgrow="ALWAYS" />
+                                          <JFXTextField fx:id="tfName" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="340.0" text="Quantity" VBox.vgrow="ALWAYS" />
+                                          <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="340.0" spacing="30.0" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <JFXButton onAction="#decreaseAdd" text="&lt;" />
+                                                <Label fx:id="addQte" text="0" />
+                                                <JFXButton onAction="#increaseAdd" text="&gt;" />
+                                             </children>
+                                          </HBox>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="340.0" text="Price" VBox.vgrow="ALWAYS" />
+                                          <JFXTextField fx:id="tfPrice" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="340.0" text="Color" VBox.vgrow="ALWAYS" />
+                                          <JFXComboBox fx:id="cbColor" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="339.0" VBox.vgrow="ALWAYS" />
+                                          <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="340.0" text="Period" VBox.vgrow="ALWAYS" />
+                                          <JFXComboBox fx:id="cbPeriod" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="339.0" VBox.vgrow="ALWAYS" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="98.0" prefWidth="334.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                       <children>
+                                          <ImageView fx:id="shoesPicture" fitHeight="113.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                                       <children>
+                                          <JFXButton onAction="#addPicture" text="Pic" />
+                                       </children>
+                                    </VBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                       <children>
+                                          <JFXButton onAction="#addMenDB" text="Add" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="3.0" right="3.0" />
+                                 </padding>
+                              </GridPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="120.0" left="20.0" right="20.0" top="120.0" />
+                           </padding>
+                        </VBox>
+                        <VBox fx:id="modelLikePane" alignment="BOTTOM_CENTER" onMouseClicked="#stayPut" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: whitesmoke;" styleClass="up2" stylesheets="@StyleSheet.css" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <JFXButton fx:id="btnClone" prefHeight="173.0" prefWidth="242.0" />
+                              <HBox alignment="BOTTOM_CENTER" prefHeight="16.0" prefWidth="380.0" spacing="20.0" style="-fx-background-color: bisque;">
+                                 <children>
+                                    <JFXButton fx:id="btnDecrease" onAction="#decreaseAction" style="-fx-background-color: aquamarine;" text="&lt;">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <Label fx:id="qte" alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="87.0" text="0" />
+                                    <JFXButton fx:id="btnIncrease" onAction="#increaseAction" style="-fx-background-color: aquamarine;" text="&gt;">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="BOTTOM_RIGHT" prefHeight="10.0" prefWidth="380.0" style="-fx-background-color: azure;">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="24.0" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/cancel%20(1)%20-%20Copy.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
                </children>
             </StackPane>
          </center>
       </BorderPane>
       <HBox fx:id="topHbox" maxHeight="45.0" minHeight="40.0" prefHeight="40.0" prefWidth="1200.0" spacing="3.0" style="-fx-background-color: #345466;" StackPane.alignment="TOP_CENTER">
          <children>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" ripplerFill="#262d46" style="-fx-background-color: #262d46;" text="Stock" textFill="WHITE">
+            <JFXButton fx:id="stockBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" ripplerFill="#262d46" style="-fx-background-color: #262d46;" text="Stock" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>

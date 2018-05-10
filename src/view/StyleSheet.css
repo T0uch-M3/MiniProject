@@ -75,3 +75,60 @@ and open the template in the editor.
     -fx-background-color: 
     -fx-background-image: url("pic.jpg");
 }*/
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: white;
+}
+.table-view .column-header:last-visible{
+    -fx-border-width: 0 0 1 0;
+}
+.table-view .column-header-background{
+    -fx-background-color: transparent;
+}
+.table-view .column-header{
+    -fx-border-width: 0 1 1 0;
+    -fx-border-color: rgba(1,1,1,0.15);
+}
+.table-view .column-header .label{
+    -fx-font-size:16px;
+    -fx-text-fill: #d386ff;
+    -fx-padding:12 0 12 0;
+    -fx-alignment:CENTER;
+    -fx-font-family: "Footlight MT Light";
+}
+.table-view .table-row-cell .table-cell{
+    -fx-border-width: 0 0 0 0;
+}
+
+.table-view .table-row-cell:selected .table-cell{
+    -fx-text-fill: red;
+    -fx-border-width: 0 0 0 0;
+}
+.table-view .table-row-cell:selected{
+    -fx-background-color: rgba(0,0,0,0.04);
+    -fx-background-insets:0;
+}
+
+
+.table-view .table-row-cell{
+    -fx-background-color:transparent;
+    -fx-background-insets:0;
+}
+
+.table-view .table-column{
+    -fx-alignment:CENTER;
+    -fx-padding:0 16 0 16;
+}
+
+.table-view .table-cell{
+    -fx-font-size: 17px;
+    -fx-font-family: "Footlight MT Light";
+}
+
+
+.table-view .corner{
+    -fx-background-color:transparent;
+
+}
+.tree-table-row-cell{
+    -fx-background-color : red;
+}

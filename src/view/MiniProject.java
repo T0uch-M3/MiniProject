@@ -8,6 +8,7 @@ package view;
 
 import controller.FirstModel;
 import controller.LoginScreenController;
+import controller.NewLoginController;
 import controller.OptionDropDownController;
 import controller.StockScreenController;
 
@@ -45,28 +46,27 @@ public class MiniProject extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
         
-
         FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("StockScreen.fxml"));
-//        firstLoader.setControllerFactory(controllerFactory);
         firstLoader.setController(new StockScreenController(fm));
         Parent firstUI = firstLoader.load();
         StockScreenController controller = firstLoader.getController();
         
         Scene sc = new Scene(firstUI);
         primaryStage.setScene(sc);
+        sc.setFill(Color.BISQUE);
+        
+        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.setScene(sc);
+        primaryStage.setWidth(1200);
+        primaryStage.setHeight(720);
+        primaryStage.setFullScreenExitHint("");
+        primaryStage.setResizable(false);
         primaryStage.show();
-        
-//        FXMLLoader secondLoader = new FXMLLoader(getClass().getResource("OptionDropDown.fxml"));
-////        secondLoader.setControllerFactory(controllerFactory);
-//        secondLoader.setController(new OptionDropDownController(fm));
-//        Parent secondtUI = (Parent)secondLoader.load();
-//        
+
         
         
-        
-        
-        stage = primaryStage;
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("StockScreen.fxml"));
 //      loader.setController(new LoginScreenController());
 //        Parent root = loader.load();

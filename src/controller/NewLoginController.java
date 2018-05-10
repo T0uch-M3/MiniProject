@@ -49,10 +49,15 @@ public class NewLoginController implements Initializable {
     public static boolean fullScreen = false;
     double angle;
     Double lastX, lastY;
+    private final FirstModel fm;
 
     /**
      * Initializes the controller class.
      */
+    public NewLoginController(FirstModel fm) {
+        this.fm = fm;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -191,50 +196,55 @@ public class NewLoginController implements Initializable {
             MiniProject.stage.setFullScreen(false);
             fullScreen = false;
             resizingIVUp(false);
-            
+
         }
     }
 
-    public void resizingIVUp(boolean bool){
-        if(bool){
-              sellImg.setLayoutX(910);
+    public void resizingIVUp(boolean bool) {
+        if (bool) {
+            sellImg.setLayoutX(910);
             sellImg.setLayoutY(-320);
             sellImg.setFitWidth(400);
             sellImg.setFitHeight(900);
-            
+
             stocksImg.setLayoutX(330);
             stocksImg.setLayoutY(510);
             stocksImg.setFitWidth(400);
             stocksImg.setFitHeight(900);
-        }else{
+        } else {
             sellImg.setLayoutX(639);
             sellImg.setLayoutY(-206);
             sellImg.setFitWidth(250);
             sellImg.setFitHeight(600);
-            
+
             stocksImg.setLayoutX(227);
             stocksImg.setLayoutY(330);
             stocksImg.setFitWidth(250);
             stocksImg.setFitHeight(600);
         }
     }
+
     @FXML
     public void goToStock(KeyEvent event) throws IOException {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/StockScreen.fxml"));
+            FXMLLoader stockLoader = new FXMLLoader(getClass().getResource("/view/StockScreen.fxml"));
+            stockLoader.setController(new StockScreenController(fm));
+            Parent root = stockLoader.load();
             MiniProject.stage.setScene(new Scene(root));
         }
 
     }
+
     @FXML
     public void goToSell(KeyEvent event) throws IOException {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/SellScreen.fxml"));
+            FXMLLoader sellLoader = new FXMLLoader(getClass().getResource("/view/SellScreen.fxml"));
+            sellLoader.setController(new SellScreenController(fm));
+            Parent root = sellLoader.load();
             MiniProject.stage.setScene(new Scene(root));
         }
 
     }
-
 
     @FXML
     public void cord(MouseEvent event) {

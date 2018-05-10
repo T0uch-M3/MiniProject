@@ -16,9 +16,13 @@ import javafx.fxml.Initializable;
  */
 public class SellScreenController implements Initializable {
 
+    private final FirstModel fm;
     /**
      * Initializes the controller class.
      */
+    public SellScreenController(FirstModel fm){
+        this.fm = fm;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
