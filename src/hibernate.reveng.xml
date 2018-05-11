@@ -41,7 +41,8 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="shoes"/>
-  <table-filter match-name="men"/>
   <table-filter match-name="women"/>
+  <table-filter match-name="men"/>
+  <table-filter match-name="user"/>
   <table-filter match-name="kids"/>
 </hibernate-reverse-engineering>

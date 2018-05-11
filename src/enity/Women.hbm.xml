@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 9, 2018 11:18:31 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 10, 2018 8:47:21 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="enity.Women" table="women" catalog="shoes" optimistic-lock="version">
         <id name="name" type="string">
@@ -21,7 +21,7 @@
             <column name="period" length="20" not-null="true" />
         </property>
         <property name="pictureUrl" type="string">
-            <column name="pictureURL" length="20" not-null="true" />
+            <column name="pictureURL" length="150" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 /**
@@ -48,23 +49,25 @@ public class MiniProject extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         
-        FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("StockScreen.fxml"));
-        firstLoader.setController(new StockScreenController(fm));
+        FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("newLogin.fxml"));
+        firstLoader.setController(new NewLoginController(fm));
         Parent firstUI = firstLoader.load();
-        StockScreenController controller = firstLoader.getController();
+        NewLoginController controller = firstLoader.getController();
         
         Scene sc = new Scene(firstUI);
         primaryStage.setScene(sc);
         sc.setFill(Color.BISQUE);
         
-        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setScene(sc);
         primaryStage.setWidth(1200);
         primaryStage.setHeight(720);
         primaryStage.setFullScreenExitHint("");
         primaryStage.setResizable(false);
         primaryStage.show();
-
+        primaryStage.setOnCloseRequest((WindowEvent ev)->{
+            System.exit(0);
+        });
         
         
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("StockScreen.fxml"));

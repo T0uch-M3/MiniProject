@@ -6,11 +6,14 @@
 package controller;
 
 import DOA.MenDAO;
+import DOA.WomenDAO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXTextField;
+import enity.Kids;
 import enity.Men;
+import enity.Women;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -20,6 +23,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,7 +60,7 @@ public class StockScreenController implements Initializable {
     @FXML
     BorderPane stockBorderPane;
     @FXML
-    GridPane gridPane, gridPane2, modelBg;
+    GridPane gridPane, gridPane2, modelBg, insideAdd;
     @FXML
     VBox modelLikePane, addPane;
     @FXML
@@ -62,7 +68,7 @@ public class StockScreenController implements Initializable {
     @FXML
     public JFXDrawer optionDrawer;
     @FXML
-    VBox optionVB;
+    VBox optionVB, addContainer;
     @FXML
     CheckBox cbTest;
     @FXML
@@ -70,24 +76,30 @@ public class StockScreenController implements Initializable {
     @FXML
     JFXButton btnFullScreen, dropDownBtn, stockBtn, btnIncrease, btnDecrease, btnClone;
     @FXML
-    HBox initialPos, initialPosFSBtn, topHbox;
+    HBox initialPos, initialPosFSBtn, topHbox, anHbox;
     @FXML
-    Label qte, addQte;
+    Label qteProp, addQte, messageLab, genderLab;
     @FXML
     public JFXButton testLabel;//the language button
     @FXML
-    JFXTextField tfName, tfPrice;
+    JFXTextField tfName, tfPrice, priceProp;
     @FXML
     JFXComboBox<String> cbColor;
     @FXML
     JFXComboBox<String> cbPeriod;
     @FXML
     ImageView shoesPicture;
-    boolean modelShow = false, stayPut = false, add = false;
+    boolean modelShow = false, stayPut = false, add = false, removeAction = false, saveAction = false, wBool = false, mBool = false, kBool = false;
     boolean dropDownMenu = false;
     public Object lastSelectedButton;
-
+    String lastImgPath;
     private final FirstModel fm;
+    ObservableList<Men> shoesArrayM = FXCollections.observableArrayList();
+    ObservableList<Women> shoesArrayW = FXCollections.observableArrayList();
+    ObservableList<Kids> shoesArrayK = FXCollections.observableArrayList();
+    Men _MenDB;
+    Women _WomenDB;
+    Kids _KidsDB;
 
     /**
      * Initializes the controller class.
@@ -98,8 +110,9 @@ public class StockScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image img = new Image("file:/C:/Users/adolf/OneDrive/Documents/NetBeansProjects/MiniProject/src/image/icons8_Women%60s_Shoe_64px.png");
-        shoesPicture.setImage(img);
+        //get shoes from db and show them as buttons
+        displayShoes();
+//        stockBtn.setFocusTraversable(true);
         stockBtn.requestFocus();//just for having more control over things
 
         //this for options drawer values
@@ -120,8 +133,10 @@ public class StockScreenController implements Initializable {
         // TODO
         modelBg.setDisable(true);
         modelLikePane.setDisable(true);
+        addPane.setDisable(true);
         modelBg.setVisible(false);
         modelLikePane.setVisible(false);
+        addPane.setVisible(false);
 
         try {
             FXMLLoader secondLoader = new FXMLLoader(getClass().getResource("/view/OptionDropDown.fxml"));
@@ -173,6 +188,7 @@ public class StockScreenController implements Initializable {
     }
 
     public void addBack() {
+        initAdd();
         modelLikePane.setDisable(true);
 
         modelBg.setVisible(false);
@@ -188,7 +204,7 @@ public class StockScreenController implements Initializable {
     }
 
     public void sendBack() {
-
+        initProp();
         //*****All of this just for the main motion*****
         modelLikePane.setDisable(true);
 
@@ -223,6 +239,12 @@ public class StockScreenController implements Initializable {
     @FXML
     public void addMen(ActionEvent event) {
         add = true;
+        mBool = true;
+        wBool = false;
+        kBool = false;
+        insideAdd.setStyle("-fx-background-color: #e3e0ff ");
+        genderLab.setText("M   E   N");
+        addPane.setDisable(false);
         //***********the same old codes zzz********************
         if (modelShow == false) {
 
@@ -240,24 +262,35 @@ public class StockScreenController implements Initializable {
 
             modelShow = true;
         }
-
-//        System.out.println("aaaa");
-//        JFXButton men = new JFXButton("new btn");
-//        Image img = new Image("/image/picV1.png");
-//        ImageView imv = new ImageView(img);
-//        imv.setFitWidth(94);
-//        imv.setFitHeight(65);
-//        men.getChildrenUnmodifiable().
-//        tilePane2.getChildren().add(men);
-//        tilePane2.getChildren().add(imv);
-//        men.setGraphic(imv);
-//        men.setContentDisplay(ContentDisplay.TOP);
-//        tilePane2.getChildren().add(men);
     }
 
     @FXML
     public void addWomen(ActionEvent event) {
+        add = true;
+        wBool = true;
+        mBool = false;
+        kBool = false;
+        insideAdd.setStyle("-fx-background-color:  #ffe0ed");
+        genderLab.setText("W   O   M   E   N");
+        addPane.setDisable(false);
 
+        //***********the same old codes zzz********************
+        if (modelShow == false) {
+
+            modelBg.setVisible(true);
+            addPane.setVisible(true);
+            addPane.toFront();
+
+            tilePane1.setDisable(true);
+            tilePane2.setDisable(true);
+            tilePane3.setDisable(true);
+
+            modelBg.setDisable(false);
+
+            modelBg.toFront();
+
+            modelShow = true;
+        }
     }
 
     @FXML
@@ -281,6 +314,12 @@ public class StockScreenController implements Initializable {
             optionDrawer.setMaxSize(180, 42);
 
             optionDrawer.setLayoutX(995);
+            //********addPane***********
+            Insets insAdd = new Insets(120, 20, 120, 20);
+            addPane.setPadding(insAdd);
+            //******Image in addPane*****
+            shoesPicture.setFitHeight(96);
+            shoesPicture.setFitWidth(137);
 
         } else {//what heppen when u go FULLSCREEN
             MiniProject.stage.setFullScreen(true);
@@ -297,6 +336,13 @@ public class StockScreenController implements Initializable {
             optionDrawer.setMaxSize(230, 90);
 
             optionDrawer.setLayoutX(1670);
+            //******addPane*************
+            Insets insAdd = new Insets(150, 25, 180, 25);
+            addPane.setPadding(insAdd);
+            addContainer.setSpacing(10);
+            //******Image in addPane*****
+            shoesPicture.setFitHeight(200);
+            shoesPicture.setFitWidth(300);
         }
     }
 
@@ -330,18 +376,15 @@ public class StockScreenController implements Initializable {
     }
 
     @FXML
-    public void openProp(ActionEvent event) throws IOException {
-
-        lastSelectedButton = event.getSource();
-        JFXButton btnReal = new JFXButton();
-
-        JFXButton btnSelected = (JFXButton) lastSelectedButton;
-        btnReal = btnSelected;
-        btnClone.graphicProperty().set(btnReal.getGraphic());
-        btnClone.setContentDisplay(ContentDisplay.TOP);
-        btnClone.setText(btnReal.getText());
-//        btn2.getChildrenUnmodifiable().remove(0);
-        System.out.println(btnSelected.getText());
+    public void openProp(String path, String name, int quantity, float price) {
+        Image img = new Image(path);
+        ImageView imv = new ImageView(img);
+        imv.setFitWidth(230);
+        imv.setFitHeight(150);
+        btnClone.setGraphic(imv);
+        btnClone.setText(name);
+        qteProp.setText(String.valueOf(quantity));
+        priceProp.setText(String.valueOf(price));
 //***********the same old codes zzz********************
         if (modelShow == false) {
 
@@ -361,9 +404,6 @@ public class StockScreenController implements Initializable {
             modelShow = true;
         }
         //*********What come next******************
-//        modelLikePane.getChildren().add(btnClone);
-//        btnClone.toBack();
-//        btnClone.setStyle("-fx-background-color:red");
 
     }
 
@@ -396,23 +436,18 @@ public class StockScreenController implements Initializable {
 
     @FXML
     public void increaseAction(ActionEvent event) {
-        Integer i = Integer.parseInt(qte.getText().toString());
+        Integer i = Integer.parseInt(qteProp.getText().toString());
         i = i + 100;
-        qte.setText(String.valueOf(i));
+        qteProp.setText(String.valueOf(i));
     }
 
     @FXML
     public void decreaseAction(ActionEvent event) {
-        Integer i = Integer.parseInt(qte.getText());
+        Integer i = Integer.parseInt(qteProp.getText());
         if (i > 0) {
             i = i - 100;
         }
-        qte.setText(String.valueOf(i));
-    }
-
-    @FXML
-    public void addMAneDB(ActionEvent event) {
-        System.err.println("add to database");
+        qteProp.setText(String.valueOf(i));
     }
 
     @FXML
@@ -438,28 +473,193 @@ public class StockScreenController implements Initializable {
     }
 
     @FXML
-    public void addMenDB(ActionEvent event) {
-        Men m = new Men(tfName.getText(), Integer.valueOf(addQte.getText()), Float.valueOf(tfPrice.getText()), cbColor.getValue().toString(), cbPeriod.getValue().toString(), "url");
-        MenDAO.addMen(m);
+    public void addToDB(ActionEvent event) {
+        if (mBool) {
+            Men m = new Men(tfName.getText(), Integer.valueOf(addQte.getText()), Float.valueOf(tfPrice.getText()), cbColor.getValue().toString(), cbPeriod.getValue().toString(), lastImgPath);
+            MenDAO.addMen(m);
+            initAdd();
+            displayShoes();
+            addBack();
+        }
+        if (wBool) {
+            Women w = new Women(tfName.getText(), Integer.valueOf(addQte.getText()), Float.valueOf(tfPrice.getText()), cbColor.getValue().toString(), cbPeriod.getValue().toString(), lastImgPath);
+            WomenDAO.addWomen(w);
+            initAdd();
+            displayShoes();
+            addBack();
+        }
     }
 
     @FXML
-    public void addPicture(ActionEvent event) throws MalformedURLException {
+    public void addPicture(MouseEvent event) throws MalformedURLException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Shoes Picture");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*jpg"));
         File selectedFile = fileChooser.showOpenDialog(null);
         File selectedFileInput = selectedFile;
 
-        if(selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString(),300,250,true,true,true);
+        if (selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
             shoesPicture.setImage(image);
-            String s = selectedFile.toURI().toURL().toExternalForm();
-            System.out.println(s);
+            if (NewLoginController.fullScreen == false) {
+                shoesPicture.setFitWidth(180);
+            }
+            lastImgPath = selectedFile.toURI().toURL().toExternalForm();
 //            selectedFileOutput.setText("File selected: " + selectedFile.getName());
 //            previewPicture.setImage();
         } else {
-//            selectedFileOutput.setText("Please select a profile picture...");
+            messageLab.setText("Please select a picture");
+        }
+    }
+
+    public void initAdd() {
+        tfName.setText(null);
+        addQte.setText("0");
+        tfPrice.setText(null);
+        cbColor.setValue(null);
+        cbPeriod.setValue(null);
+        Image imgPH = new Image("/Image/imgPlaceHolder.png");
+        shoesPicture.setImage(imgPH);
+        if (NewLoginController.fullScreen == false) {
+            shoesPicture.setFitWidth(137);
+        }
+    }
+
+    public void initProp() {
+        qteProp.setText(null);
+        priceProp.setText(null);
+        anHbox.setVisible(false);
+    }
+//add ripple fill to the buttons
+
+    public void displayShoes() {
+        //Magic trick part one
+        shoesArrayM.clear();
+        shoesArrayW.clear();
+        shoesArrayK.clear();
+        tilePane1.getChildren().clear();
+        tilePane2.getChildren().clear();
+        tilePane3.getChildren().clear();
+        shoesArrayM.addAll(MenDAO.listMen());
+        for (Men m : shoesArrayM) {
+            JFXButton newMen = new JFXButton();
+            newMen.setText(m.getName());
+            newMen.setPrefWidth(109);
+            Image img = new Image(m.getPictureUrl());
+            ImageView imv = new ImageView(img);
+            imv.setFitWidth(92);
+            imv.setFitHeight(65);
+            newMen.setGraphic(imv);
+            newMen.setContentDisplay(ContentDisplay.TOP);
+            newMen.getStyleClass().add("buttons");
+            newMen.setOnAction((ActionEvent event) -> {
+                JFXButton thisBtn = (JFXButton) event.getSource();
+                _MenDB = MenDAO.getMen(thisBtn.getText());
+                openProp(_MenDB.getPictureUrl(), _MenDB.getName(), _MenDB.getQte(), _MenDB.getPrice());
+                wBool = false;
+                mBool = true;
+                kBool = false;
+            });
+            tilePane1.getChildren().add(newMen);
+        }
+
+        shoesArrayW.addAll(WomenDAO.listWomen());
+        for (Women w : shoesArrayW) {
+            JFXButton newWomen = new JFXButton();
+            newWomen.setText(w.getName());
+            newWomen.setPrefWidth(109);
+            Image img = new Image(w.getPictureUrl());
+            ImageView imv = new ImageView(img);
+            imv.setFitWidth(92);
+            imv.setFitHeight(65);
+            newWomen.setGraphic(imv);
+            newWomen.setContentDisplay(ContentDisplay.TOP);
+            newWomen.getStyleClass().add("buttons");
+            newWomen.setOnAction((ActionEvent event) -> {
+                JFXButton thisBtn = (JFXButton) event.getSource();
+                _WomenDB = WomenDAO.getWomen(thisBtn.getText());
+                openProp(_WomenDB.getPictureUrl(), _WomenDB.getName(), _WomenDB.getQte(), _WomenDB.getPrice());
+                wBool = true;
+                mBool = false;
+                kBool = false;
+            });
+            tilePane2.getChildren().add(newWomen);
+        }
+
+    }
+
+    @FXML
+    public void saveModification(ActionEvent event) {
+        saveAction = true;
+        anHbox.setVisible(true);
+    }
+
+    @FXML
+    public void removeFromDB(ActionEvent event) {
+        removeAction = true;
+        anHbox.setVisible(true);
+    }
+
+    @FXML
+    public void AyeAction(ActionEvent event) {
+        //warpdancer
+        if (removeAction) {
+            if (wBool) {
+                WomenDAO.removeWomen(_WomenDB);
+                sendBack();
+                initProp();
+                displayShoes();
+                removeAction = false;
+            }
+            if (mBool) {
+                MenDAO.removeMen(_MenDB);
+                sendBack();
+                initProp();
+                displayShoes();
+                removeAction = false;
+            }
+        }
+        if (saveAction) {
+            if (wBool) {
+                WomenDAO.saveChange(_WomenDB.getName(), Integer.valueOf(qteProp.getText()), Float.valueOf(priceProp.getText()));
+                sendBack();
+                initProp();
+                saveAction = false;
+            }
+            if (mBool) {
+                MenDAO.saveChange(_MenDB.getName(), Integer.valueOf(qteProp.getText()), Float.valueOf(priceProp.getText()));
+                sendBack();
+                initProp();
+                saveAction = false;
+            }
+        }
+    }
+
+    @FXML
+    public void NayAction(ActionEvent event) {
+        if (!removeAction) {
+            removeAction = false;
+            anHbox.setVisible(false);
+        }
+        if (!saveAction) {
+            saveAction = false;
+            anHbox.setVisible(false);
+        }
+    }
+
+    //the next two meth deal with the price text field in prop tab
+    @FXML
+    public void unlockAction(ActionEvent event) {
+        priceProp.setDisable(false);
+    }
+
+    @FXML
+    public void resetAction(ActionEvent evetn) {
+        if (mBool) {
+            priceProp.setText(String.valueOf(_MenDB.getPrice()));
+        }
+        if (wBool) {
+            priceProp.setText(String.valueOf(_WomenDB.getPrice()));
         }
     }
 }
