@@ -256,12 +256,17 @@ public class NewLoginController implements Initializable {
     @FXML
     public void goToStock(KeyEvent event) throws IOException {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            FXMLLoader stockLoader = new FXMLLoader(getClass().getResource("/view/StockScreen.fxml"));
-            stockLoader.setController(new StockScreenController(fm));
-            Parent root = stockLoader.load();
-            MiniProject.stage.setScene(new Scene(root));
+            toStock();
         }
 
+    }
+
+    @FXML
+    public void toStock() throws IOException {
+        FXMLLoader stockLoader = new FXMLLoader(getClass().getResource("/view/StockScreen.fxml"));
+        stockLoader.setController(new StockScreenController(fm));
+        Parent root = stockLoader.load();
+        MiniProject.stage.setScene(new Scene(root));
     }
 
     @FXML
@@ -316,7 +321,7 @@ public class NewLoginController implements Initializable {
     }
 
     @FXML
-    public void confirmAdmin(ActionEvent event) {
+    public void confirmAdmin(ActionEvent event) throws IOException {
         if (!loginA) {
             User u = new User(tfIdAdmin.getText(), pfPwdAdmin.getText(), 'A');
             UserDAO.addUser(u);
@@ -328,14 +333,14 @@ public class NewLoginController implements Initializable {
             try {
                 User u = UserDAO.getUser(tfIdAdmin.getText(), pfPwdAdmin.getText());
                 System.out.println(u.getId());
-
+                toStock();
             } catch (NullPointerException ex) {
                 adminLab.setText("Wrong Info or not saved");
                 adminLab.setTextFill(Paint.valueOf("RED"));
-                Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ev-> {
+                Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ev -> {
                     adminLab.setText("Admin Login");
                     adminLab.setTextFill(Paint.valueOf("Black"));
-                        }));
+                }));
                 timeline.play();
             }
         }
@@ -358,10 +363,10 @@ public class NewLoginController implements Initializable {
             } catch (NullPointerException ex) {
                 userLab.setText("Wrong Info or not saved");
                 userLab.setTextFill(Paint.valueOf("RED"));
-                Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ev-> {
+                Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ev -> {
                     userLab.setText("User Login");
                     userLab.setTextFill(Paint.valueOf("Black"));
-                        }));
+                }));
                 timeline.play();
             }
         }

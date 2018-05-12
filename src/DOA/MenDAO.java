@@ -43,7 +43,24 @@ public class MenDAO {
         session.close();
         return l;
     }
-
+    public static List<Men> listMenPeriod(String period) {
+        List<Men> l = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Query req = session.createQuery("from Men where period = '" + period + "'");
+        l = req.list();
+        session.close();
+        return l;
+    }
+     public static List<Men> listMenColor(String color) {
+        List<Men> l = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Query req = session.createQuery("from Men where color = '" + color + "'");
+        l = req.list();
+        session.close();
+        return l;
+    }
+    
+    
     public static Men getMen(String name) {
         Men m = null;
         session = HibernateUtil.getSessionFactory().openSession();

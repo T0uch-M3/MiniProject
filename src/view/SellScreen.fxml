@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -25,18 +26,18 @@
             <JFXDrawer fx:id="optionDrawer" direction="TOP" layoutX="995.0" layoutY="-83.0" maxHeight="-Infinity" maxWidth="180.0" prefHeight="42.0" prefWidth="180.0" resizableOnDrag="true" rotate="180.0" />
          </children>
       </Pane>
-      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1200.0">
+      <BorderPane fx:id="sellBorderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1200.0">
          <center>
             <StackPane>
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
                <children>
-                  <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e6e6fa;">
+                  <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1167.0" style="-fx-background-color: #e6e6fa;">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="637.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="28.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="533.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="620.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="27.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="543.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
@@ -48,59 +49,40 @@
                      <children>
                         <HBox maxHeight="100.0" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-background-radius: 8px; -fx-background-color: #EFF7FF;" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                            <children>
-                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #EBB88F;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                  <children>
                                     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="105.0" text="Men" HBox.hgrow="ALWAYS" />
-                                          <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Kids" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="menRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="31.0" prefWidth="100.0" style="-jfx-selected-color: #ff6a80;" text="Men" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="kidsRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="31.0" prefWidth="100.0" text="Kids" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
-                                    <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="100.0" text="Women" VBox.vgrow="ALWAYS" />
+                                    <JFXRadioButton fx:id="womenRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="37.0" prefWidth="230.0" text="Women" VBox.vgrow="ALWAYS" />
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding>
                               </VBox>
-                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #EBB88F;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                              <VBox disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
                                  <children>
-                                    <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Boys" VBox.vgrow="ALWAYS" />
-                                    <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Girls" VBox.vgrow="ALWAYS" />
+                                    <JFXRadioButton fx:id="boysRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Boys" VBox.vgrow="ALWAYS" />
+                                    <JFXRadioButton fx:id="girlsRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Girls" VBox.vgrow="ALWAYS" />
                                  </children>
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding>
                               </VBox>
-                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #EBB88F;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <HBox prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
-                                       <children>
-                                          <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Summer" HBox.hgrow="ALWAYS" />
-                                          <JFXCheckBox checkedColor="#fff0d4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Seasonal" HBox.hgrow="ALWAYS" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
-                                       <children>
-                                          <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Winter" HBox.hgrow="ALWAYS" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding>
-                              </VBox>
-                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #EBB88F;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                  <children>
                                     <HBox prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Dark" />
-                                          <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Unusual" />
+                                          <JFXRadioButton fx:id="summerRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Summer" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="seasonalRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Seasonal" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Bright" />
-                                          <JFXCheckBox checkedColor="#ff6a80" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" text="Unspecified" />
+                                          <JFXRadioButton fx:id="winterRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Winter" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -108,10 +90,29 @@
                                     <Insets left="5.0" />
                                  </padding>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="60.0" prefWidth="156.0" style="-fx-background-color: #EBB88F;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <JFXRadioButton fx:id="darkRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Dark" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="unusualRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Unusual" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <JFXRadioButton fx:id="brightRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="37.0" prefWidth="78.0" text="Bright" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="unspecifiedRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="37.0" prefWidth="80.0" text="Unspecified" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox alignment="BOTTOM_CENTER" prefHeight="60.0" prefWidth="156.0" spacing="10.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                  <children>
                                     <JFXTextField />
-                                    <JFXButton text="Search" />
+                                    <JFXButton alignment="BOTTOM_CENTER" text="Search" />
                                  </children>
                                  <padding>
                                     <Insets left="5.0" right="5.0" />
@@ -119,15 +120,17 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <TableView fx:id="sellTable" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="408.0" prefWidth="602.0" stylesheets="@StyleSheet.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                        <TableView fx:id="sellTable" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="511.0" prefWidth="568.0" stylesheets="@StyleSheet.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn fx:id="C1" maxWidth="1.7976931348623157E308" prefWidth="127.0" text="C1" />
-                              <TableColumn fx:id="C2" maxWidth="1.7976931348623157E308" prefWidth="141.666748046875" text="C2" />
-                              <TableColumn fx:id="C3" maxWidth="1.7976931348623157E308" prefWidth="99.333251953125" text="C3" />
-                              <TableColumn fx:id="C4" maxWidth="1.7976931348623157E308" prefWidth="268.6666259765625" text="C4" />
+                              <TableColumn fx:id="nameCol" editable="false" maxWidth="1.7976931348623157E308" prefWidth="210.0" text="Name" />
+                              <TableColumn fx:id="qteCol" maxWidth="1.7976931348623157E308" prefWidth="180.0" text="Available Quantity" />
+                              <TableColumn fx:id="priceCol" maxWidth="1.7976931348623157E308" prefWidth="195.0" resizable="false" text="Price (10 units)" />
                            </columns>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
                         </TableView>
-                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="30.0" style="-fx-background-color: #FF9F80;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #CCCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" prefHeight="24.0" prefWidth="531.0" style="-fx-background-color: #ff80a1;">
                                  <children>
@@ -140,28 +143,68 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="117.0" prefWidth="531.0">
                                  <children>
-                                    <Label text="Picture here" />
+                                    <ImageView fitHeight="166.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="75.0" prefWidth="523.0" spacing="50.0">
+                                 <children>
+                                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="79.0" prefWidth="256.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="256.0" text="Available Quantity" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="133.0" prefWidth="256.0">
+                                             <children>
+                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="252.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="256.0" text="Needed Quantity" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="&lt;" HBox.hgrow="ALWAYS" />
+                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" HBox.hgrow="ALWAYS" />
+                                                <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="&gt;" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="523.0">
+                                 <children>
+                                    <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="64.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Price" VBox.vgrow="ALWAYS" />
+                                          <JFXTextField prefHeight="31.0" prefWidth="523.0" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="30.0" right="30.0" />
+                                       </padding>
+                                    </VBox>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="35.0" prefWidth="531.0">
                                  <children>
-                                    <Label text="Quantity" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="35.0" prefWidth="531.0">
-                                 <children>
-                                    <Label text="Price" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="35.0" prefWidth="531.0">
-                                 <children>
-                                    <Label text="Quantity" />
+                                    <JFXButton text="Confirm" />
                                  </children>
                               </HBox>
                            </children>
                            <padding>
                               <Insets top="1.0" />
                            </padding>
+                           <GridPane.margin>
+                              <Insets right="20.0" />
+                           </GridPane.margin>
                         </VBox>
                      </children>
                      <StackPane.margin>
@@ -177,12 +220,12 @@
       </BorderPane>
       <HBox fx:id="topHbox" maxHeight="45.0" minHeight="40.0" prefHeight="40.0" prefWidth="1200.0" spacing="3.0" style="-fx-background-color: #345466;" StackPane.alignment="TOP_CENTER">
          <children>
-            <JFXButton fx:id="stockBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" ripplerFill="#262d46" style="-fx-background-color: #262d46;" text="Sell" textFill="WHITE">
+            <JFXButton fx:id="sellBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" ripplerFill="#262d46" style="-fx-background-color: #262d46;" text="Sell" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
             </JFXButton>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#goToStats" prefHeight="85.0" prefWidth="115.0" text="Stats" textFill="WHITE">
+            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Stats" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>

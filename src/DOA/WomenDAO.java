@@ -44,6 +44,24 @@ public class WomenDAO {
         session.close();
         return l;
     }
+    
+    public static List<Women> listWomenPeriod(String period) {
+        List<Women> l = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Query req = session.createQuery("from Women where period = '" + period + "'");
+        l = req.list();
+        session.close();
+        return l;
+    }
+    
+     public static List<Women> listWomenColor(String color) {
+        List<Women> l = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Query req = session.createQuery("from Women where color = '" + color + "'");
+        l = req.list();
+        session.close();
+        return l;
+    }
 
     public static Women getWomen(String name) {
         Women w = null;

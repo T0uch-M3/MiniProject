@@ -119,14 +119,14 @@ and open the template in the editor.
     -fx-border-width: 0 0 0 0;
 }
 .table-view .table-row-cell:selected{
-    -fx-background-color: rgba(0,0,0,0.04);
+    -fx-background-color: rgba(0,0,0,0.09);
     -fx-background-insets:0;
 }
 
 
 .table-view .table-row-cell{
-    -fx-background-color:transparent;
-    -fx-background-insets:0;
+    /*-fx-background-color:transparent;*/
+    /*-fx-background-insets:0;*/
 }
 
 .table-view .table-column{

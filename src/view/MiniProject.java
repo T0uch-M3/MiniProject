@@ -10,6 +10,7 @@ import controller.FirstModel;
 import controller.LoginScreenController;
 import controller.NewLoginController;
 import controller.OptionDropDownController;
+import controller.SellScreenController;
 import controller.StockScreenController;
 
 import java.awt.Dimension;
@@ -49,10 +50,10 @@ public class MiniProject extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         
-        FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("newLogin.fxml"));
-        firstLoader.setController(new NewLoginController(fm));
+        FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("SellScreen.fxml"));
+        firstLoader.setController(new SellScreenController(fm));
         Parent firstUI = firstLoader.load();
-        NewLoginController controller = firstLoader.getController();
+        SellScreenController controller = firstLoader.getController();
         
         Scene sc = new Scene(firstUI);
         primaryStage.setScene(sc);
