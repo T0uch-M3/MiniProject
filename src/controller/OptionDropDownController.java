@@ -23,26 +23,57 @@ public class OptionDropDownController implements Initializable {
      */
     public static boolean languageEng = true;
     private final FirstModel fm;
+    boolean firsTime = true, currentStat = false;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }   
-    public void checkIt(ActionEvent event){
-        
+        fm.statProperty().addListener((obs, oldStat, newStat) -> {
+            if (newStat) {
+                currentStat = true;
+            } else {
+                currentStat = false;
+            }
+        });
     }
+
+    public void checkIt(ActionEvent event) {
+
+    }
+
     @FXML
-    public void toArabic(ActionEvent event){
+    public void toArabic(ActionEvent event) {
 //        System.out.println("ARRRRR");
 //        StockScreenController p = new StockScreenController();
 //        p.testLabel.setText("AAAAAA");
         fm.setText("اختبار");
     }
+
     @FXML
-    public void toEnglish(ActionEvent event){
+    public void toEnglish(ActionEvent event) {
         fm.setText("Test");
     }
-    public OptionDropDownController(FirstModel fm){
+
+    public OptionDropDownController(FirstModel fm) {
         this.fm = fm;
     }
-    
+
+    @FXML
+    public void changePwd(ActionEvent event) {
+//        if (firsTime) {
+//            System.out.println("first time");
+//            fm.setStat(true);
+//            firsTime = false;
+//        }
+        if (currentStat) {
+            fm.setStat(false);
+        } else {
+            fm.setStat(true);
+        }
+    }
+
+    public void changeStat() {
+
+    }
+
 }

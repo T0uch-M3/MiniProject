@@ -6,35 +6,47 @@
 package controller;
 
 import DOA.MenDAO;
+import DOA.UserDAO;
 import DOA.WomenDAO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextField;
+import static controller.NewLoginController.fullScreen;
 import enity.Men;
 import enity.Women;
+import java.io.IOException;
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.util.Callback;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import view.MiniProject;
 
 /**
  * FXML Controller class
@@ -50,12 +62,16 @@ public class SellScreenController implements Initializable {
     @FXML
     BorderPane sellBorderPane;
     @FXML
+    GridPane modelBg;
+    @FXML
     public JFXDrawer optionDrawer;
     boolean dropDownMenu = false;
     @FXML
     JFXButton sellBtn;
     @FXML
     Pane dropDownBg;
+    @FXML
+    ImageView sellImv;
     ObservableList<Men> shoesList = FXCollections.observableArrayList();
     ObservableList<Women> shoesList2 = FXCollections.observableArrayList();
     ObservableList<Men> shoesList3 = FXCollections.observableArrayList();
@@ -67,6 +83,14 @@ public class SellScreenController implements Initializable {
     @FXML
     TableView sellTable;
     @FXML
+    VBox vBox1, vBox2, vBox3, vBox4, optionVB, modelLikePane;
+    @FXML
+    HBox initialPos;
+    @FXML
+    JFXTextField priceTf, searchTf;
+    @FXML
+    JFXPasswordField oldPwd, newPwd, repeatPwd;
+    @FXML
     TableColumn<String, String> nameCol;
     @FXML
     TableColumn<String, Integer> qteCol;
@@ -75,10 +99,21 @@ public class SellScreenController implements Initializable {
     @FXML
     JFXRadioButton menRb, womenRb, kidsRb, boysRb, girlsRb, summerRb, winterRb, seasonalRb, darkRb, brightRb, unusualRb, unspecifiedRb;
     @FXML
+    Label availableQte, neededQte;
+    @FXML
+    JFXButton dropDownBtn;
+    @FXML
     ToggleGroup tg1 = new ToggleGroup();
     ToggleGroup tg2 = new ToggleGroup();
     ToggleGroup tg3 = new ToggleGroup();
     ToggleGroup tg4 = new ToggleGroup();
+    boolean mbool = false, wBool = false, kBool = false, modelShow = false, stayPut = false;
+    Men m = new Men();
+    Women w = new Women();
+    Image sellImg = null;
+    int nQte = 0;
+    int nbrUnit = 0;
+    float selectedPrice = 0;
 
     public SellScreenController(FirstModel fm) {
         this.fm = fm;
@@ -86,6 +121,23 @@ public class SellScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        fullScreen(true);
+
+        fm.statProperty().addListener((obs, oldStat, newStat) -> {
+            if (newStat) {
+                changePwdAction();
+            } else {
+                sendBack();
+            }
+        });
+
+        vBox2.setDisable(true);
+        vBox3.setDisable(true);
+        vBox4.setDisable(true);
+
+        sellImg = new Image("/image/add-image.png");
+        sellImv.setImage(sellImg);
+
         sellBorderPane.requestFocus();
         sellBtn.setFocusTraversable(true);
         sellBtn.requestFocus();
@@ -112,8 +164,36 @@ public class SellScreenController implements Initializable {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         qteCol.setCellValueFactory(new PropertyValueFactory<>("qte"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-        
-        
+
+        sellTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("test something should get selectet");
+            neededQte.setText("0");
+            priceTf.setText("0");
+            if (mbool) {
+                m = (Men) newValue;
+            }
+            if (wBool) {
+                w = (Women) newValue;
+            }
+            selectionMeth();
+
+        });
+        try {
+            FXMLLoader secondLoader = new FXMLLoader(getClass().getResource("/view/OptionDropDown.fxml"));
+            secondLoader.setController(new OptionDropDownController(fm));
+            optionVB = secondLoader.load();
+            optionDrawer.setSidePane(optionVB);
+            optionDrawer.open();
+        } catch (IOException ex) {
+            Logger.getLogger(StockScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MiniProject.stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            if (NewLoginController.fullScreen == true) {
+                MiniProject.stage.setFullScreen(false);
+                fullScreen(false);
+            }
+        });
+
     }
 
     @FXML
@@ -159,6 +239,9 @@ public class SellScreenController implements Initializable {
         JFXRadioButton clone = (JFXRadioButton) event.getSource();
 
         if (menRb.isSelected()) {
+            mbool = true;
+            wBool = false;
+            kBool = false;
             shoesList.clear();
             shoesList.addAll(MenDAO.listMen());
             unselectRb(clone.getText());
@@ -340,6 +423,9 @@ public class SellScreenController implements Initializable {
             }
         }
         if (womenRb.isSelected()) {
+            wBool = true;
+            mbool = false;
+            kBool = false;
             shoesList2.clear();
             shoesList2.addAll(WomenDAO.listWomen());
             unselectRb(clone.getText());
@@ -526,6 +612,9 @@ public class SellScreenController implements Initializable {
 
     public void unselectRb(String text) {
         if (text.equals("Men") || text.equals("Women")) {
+            vBox3.setDisable(false);
+            vBox4.setDisable(true);
+
             boysRb.setSelected(false);
             girlsRb.setSelected(false);
             summerRb.setSelected(false);
@@ -546,10 +635,226 @@ public class SellScreenController implements Initializable {
             unusualRb.setSelected(false);
         }
         if (text.equals("Summer") || text.equals("Winter") || text.equals("Seasonal")) {
+            vBox4.setDisable(false);
+
             brightRb.setSelected(false);
             darkRb.setSelected(false);
             unspecifiedRb.setSelected(false);
             unusualRb.setSelected(false);
+        }
+    }
+
+    public void selectionMeth() {
+
+        if (mbool && m != null) {
+            sellImg = new Image(m.getPictureUrl());
+            sellImv.setImage(sellImg);
+            availableQte.setText(String.valueOf(m.getQte()));
+            selectedPrice = m.getPrice();
+//            priceTf.setText(String.valueOf(m.getPrice()));
+        }
+        if (wBool && w != null) {
+            sellImg = new Image(w.getPictureUrl());
+            sellImv.setImage(sellImg);
+            availableQte.setText(String.valueOf(w.getQte()));
+            selectedPrice = w.getPrice();
+        }
+    }
+
+    @FXML
+    public void increaseQte(ActionEvent event) {
+        if (Integer.valueOf(availableQte.getText()) > nQte) {
+            nQte = nQte + 10;
+            nbrUnit = nbrUnit + 1;
+            neededQte.setText(String.valueOf(nQte));
+            priceTf.setText(String.valueOf(selectedPrice * nbrUnit));
+        }
+    }
+
+    @FXML
+    public void decreaseQte(ActionEvent event) {
+        if (0 < nQte) {
+            nQte = nQte - 10;
+            nbrUnit = nbrUnit - 1;
+            neededQte.setText(String.valueOf(nQte));
+            priceTf.setText(String.valueOf(selectedPrice * nbrUnit));
+        }
+    }
+
+    @FXML
+    public void searchActionK(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            searchResult();
+        }
+    }
+
+    @FXML
+    public void searchActionM(ActionEvent event) {
+        searchResult();
+    }
+
+    public void searchResult() {
+        Women w2 = WomenDAO.getWomen(searchTf.getText());
+        Men m2 = MenDAO.getMen(searchTf.getText());
+        if (w2 != null) {
+            wBool = true;
+            mbool = false;
+            kBool = false;
+            shoesList2.clear();
+            shoesList2.add(w2);
+            sellTable.setItems(shoesList2);
+        }
+        if (m2 != null) {
+            mbool = true;
+            wBool = false;
+            kBool = false;
+            shoesList.clear();
+            shoesList.add(m2);
+            sellTable.setItems(shoesList);
+        }
+    }
+
+    public void changePwdAction() {
+
+        if (modelShow == false) {
+
+            modelBg.setVisible(true);
+            modelLikePane.setVisible(true);
+
+            modelLikePane.setDisable(false);
+            modelBg.setDisable(false);
+
+            modelLikePane.toFront();
+            modelBg.toFront();
+
+            modelShow = true;
+        }
+    }
+
+    @FXML
+    public void stayPut(MouseEvent event) {
+        //this to disable leaving the modal when pressing inside
+        stayPut = true;
+    }
+
+    @FXML
+    public void sendBackAction(MouseEvent event) throws IOException {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), av -> {
+            if (stayPut) {
+                event.consume();
+                stayPut = false;
+            } else {
+                sendBack();
+                fm.setStat(false);
+            }
+        }));
+        timeline.play();
+    }
+
+    public void sendBack() {
+        initPwd();
+        //*****All of this just for the main motion*****
+        modelLikePane.setDisable(true);
+
+        modelBg.setVisible(false);
+        modelLikePane.setVisible(false);
+
+        modelLikePane.toBack();
+        modelBg.toBack();
+
+        modelShow = false;
+    }
+
+    public void initPwd() {
+        oldPwd.setText(null);
+        newPwd.setText(null);
+        repeatPwd.setText(null);
+    }
+
+    @FXML
+    public void savePwd(ActionEvent event) {
+        if (newPwd.getText().equals(repeatPwd.getText()) && oldPwd.getText().equals(NewLoginController.lastPwd)) {
+            UserDAO.changePwd(NewLoginController.lastId, newPwd.getText());
+            initPwd();
+            sendBack();
+            fm.setStat(false);
+        } else {
+            if (!newPwd.getText().equals(repeatPwd.getText())) {
+                System.out.println("not the same ");
+            }
+        }
+
+    }
+
+    @FXML
+    public void cancelAction(ActionEvent event) {
+        initPwd();
+        sendBack();
+        fm.setStat(false);
+    }
+
+    @FXML
+    public void goFullScreen(ActionEvent event) {
+        fullScreen(false);
+    }
+
+    public void fullScreen(boolean old) {//old value will indicate when it was fullscreen before or no
+        if (!old) {
+            if (NewLoginController.fullScreen) {
+                MiniProject.stage.setFullScreen(false);
+                NewLoginController.fullScreen = false;
+
+                Insets ins = new Insets(0, 10, 0, 0);
+                initialPos.setPadding(ins);
+
+                optionDrawer.setPrefSize(180, 42);
+                optionDrawer.setMaxSize(180, 42);
+
+                optionDrawer.setLayoutX(995);
+
+                sellTable.setPrefHeight(461);
+                nameCol.setPrefWidth(200);
+                qteCol.setPrefWidth(190);
+                priceCol.setPrefWidth(224);
+                sellImv.setFitHeight(166);
+                sellImv.setFitWidth(259);
+
+            } else {//what heppen when u go FULLSCREEN
+                MiniProject.stage.setFullScreen(true);
+                NewLoginController.fullScreen = true;
+
+                Insets ins = new Insets(0, 30, 0, 0);
+                initialPos.setPadding(ins);
+                dropDownBtn.setLayoutX(1700);
+
+                optionDrawer.setPrefSize(230, 90);
+                optionDrawer.setMaxSize(230, 90);
+
+                optionDrawer.setLayoutX(1670);
+
+                sellTable.setPrefHeight(800);
+                nameCol.setPrefWidth(313);
+                qteCol.setPrefWidth(313);
+                priceCol.setPrefWidth(313);
+                sellImv.setFitHeight(330);
+                sellImv.setFitWidth(370);
+                //******addPane*************
+                Insets insAdd = new Insets(150, 25, 180, 25);
+            }
+        } else {
+            if (NewLoginController.fullScreen) {
+                System.out.println("go full");
+                MiniProject.stage.setFullScreen(true);
+                Insets ins = new Insets(0, 10, 0, 0);
+                initialPos.setPadding(ins);
+
+                optionDrawer.setPrefSize(180, 42);
+                optionDrawer.setMaxSize(180, 42);
+
+                optionDrawer.setLayoutX(995);
+            } else {
+                MiniProject.stage.setFullScreen(false);
+            }
         }
     }
 

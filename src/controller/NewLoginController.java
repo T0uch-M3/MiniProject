@@ -63,6 +63,8 @@ public class NewLoginController implements Initializable {
     double angle;
     Double lastX, lastY;
     private final FirstModel fm;
+    public static String lastId;
+    public static String lastPwd;
 
     /**
      * Initializes the controller class.
@@ -88,7 +90,7 @@ public class NewLoginController implements Initializable {
         lastX = btnFullScreen.getLayoutX();
         lastY = btnFullScreen.getLayoutY();
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ev -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(3000), ev -> {
             upVbox.setVisible(true);
             downVbox.setVisible(true);
         }));
@@ -256,7 +258,29 @@ public class NewLoginController implements Initializable {
     @FXML
     public void goToStock(KeyEvent event) throws IOException {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            toStock();
+            if (!loginA) {
+                User u = new User(tfIdAdmin.getText(), pfPwdAdmin.getText(), 'A');
+                UserDAO.addUser(u);
+                newAdminBtn.setText("");
+                tfIdAdmin.setText(null);
+                pfPwdAdmin.setText(null);
+                adminLab.setText("Admin Login");
+            } else {
+                try {
+                    User u = UserDAO.getUser(tfIdAdmin.getText(), pfPwdAdmin.getText(), 'A');
+                    lastId = u.getId();
+                    lastPwd = u.getPassword();
+                    toStock();
+                } catch (NullPointerException ex) {
+                    adminLab.setText("Wrong Info or not saved");
+                    adminLab.setTextFill(Paint.valueOf("RED"));
+                    Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ev -> {
+                        adminLab.setText("Admin Login");
+                        adminLab.setTextFill(Paint.valueOf("Black"));
+                    }));
+                    timeline.play();
+                }
+            }
         }
 
     }
@@ -266,18 +290,44 @@ public class NewLoginController implements Initializable {
         FXMLLoader stockLoader = new FXMLLoader(getClass().getResource("/view/StockScreen.fxml"));
         stockLoader.setController(new StockScreenController(fm));
         Parent root = stockLoader.load();
-        MiniProject.stage.setScene(new Scene(root));
+        MiniProject.stage.getScene().setRoot(root);
     }
 
     @FXML
     public void goToSell(KeyEvent event) throws IOException {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            FXMLLoader sellLoader = new FXMLLoader(getClass().getResource("/view/SellScreen.fxml"));
-            sellLoader.setController(new SellScreenController(fm));
-            Parent root = sellLoader.load();
-            MiniProject.stage.setScene(new Scene(root));
+            if (!loginN) {
+                User u = new User(tfIdUser.getText(), pfPwdUser.getText(), 'N');
+                UserDAO.addUser(u);
+                newUserBtn.setText("");
+                tfIdUser.setText(null);
+                pfPwdUser.setText(null);
+                userLab.setText("User Login");
+            } else {
+                try {
+                    User u = UserDAO.getUser(tfIdUser.getText(), pfPwdUser.getText(), 'N');
+                    lastId = u.getId();
+                    lastPwd = u.getPassword();
+                    toSell();
+                } catch (NullPointerException ex) {
+                    userLab.setText("Wrong Info or not saved");
+                    userLab.setTextFill(Paint.valueOf("RED"));
+                    Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ev -> {
+                        userLab.setText("User Login");
+                        userLab.setTextFill(Paint.valueOf("Black"));
+                    }));
+                    timeline.play();
+                }
+            }
         }
 
+    }
+
+    public void toSell() throws IOException {
+        FXMLLoader sellLoader = new FXMLLoader(getClass().getResource("/view/SellScreen.fxml"));
+        sellLoader.setController(new SellScreenController(fm));
+        Parent root = sellLoader.load();
+        MiniProject.stage.getScene().setRoot(root);
     }
 
     @FXML
@@ -331,8 +381,9 @@ public class NewLoginController implements Initializable {
             adminLab.setText("Admin Login");
         } else {
             try {
-                User u = UserDAO.getUser(tfIdAdmin.getText(), pfPwdAdmin.getText());
-                System.out.println(u.getId());
+                User u = UserDAO.getUser(tfIdAdmin.getText(), pfPwdAdmin.getText(), 'A');
+                lastId = u.getId();
+                lastPwd = u.getPassword();
                 toStock();
             } catch (NullPointerException ex) {
                 adminLab.setText("Wrong Info or not saved");
@@ -347,7 +398,7 @@ public class NewLoginController implements Initializable {
     }
 
     @FXML
-    public void confirmUser(ActionEvent event) {
+    public void confirmUser(ActionEvent event) throws IOException {
         if (!loginN) {
             User u = new User(tfIdUser.getText(), pfPwdUser.getText(), 'N');
             UserDAO.addUser(u);
@@ -357,9 +408,10 @@ public class NewLoginController implements Initializable {
             userLab.setText("User Login");
         } else {
             try {
-                User u = UserDAO.getUser(tfIdUser.getText(), pfPwdUser.getText());
-                System.out.println(u.getId());
-
+                User u = UserDAO.getUser(tfIdUser.getText(), pfPwdUser.getText(), 'N');
+                lastId = u.getId();
+                lastPwd = u.getPassword();
+                toSell();
             } catch (NullPointerException ex) {
                 userLab.setText("Wrong Info or not saved");
                 userLab.setTextFill(Paint.valueOf("RED"));

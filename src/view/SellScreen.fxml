@@ -2,12 +2,14 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -33,6 +35,60 @@
                   <Insets />
                </BorderPane.margin>
                <children>
+                  <GridPane fx:id="modelBg" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#sendBackAction" prefHeight="571.0" prefWidth="1050.0" styleClass="model" stylesheets="@StyleSheet.css">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <VBox fx:id="modelLikePane" alignment="BOTTOM_CENTER" onMouseClicked="#stayPut" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #cde6ff;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <padding>
+                              <Insets bottom="4.0" left="100.0" right="100.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Old Password" VBox.vgrow="ALWAYS" />
+                              <JFXPasswordField fx:id="oldPwd" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="New Password" VBox.vgrow="ALWAYS" />
+                              <JFXPasswordField fx:id="newPwd" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Repeat Password" />
+                              <JFXPasswordField fx:id="repeatPwd" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <HBox prefHeight="37.0" prefWidth="213.0">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#savePwd" prefHeight="37.0" prefWidth="52.0" style="-fx-background-color: #ffa489;" text="Save">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="  " HBox.hgrow="ALWAYS" />
+                                    <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#cancelAction" style="-fx-background-color: #ffa489;" text="Cancel">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
                   <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1167.0" style="-fx-background-color: #e6e6fa;">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="620.0" />
@@ -49,21 +105,21 @@
                      <children>
                         <HBox maxHeight="100.0" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-background-radius: 8px; -fx-background-color: #EFF7FF;" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                            <children>
-                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                              <VBox fx:id="vBox1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                  <children>
                                     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
                                        <children>
                                           <JFXRadioButton fx:id="menRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="31.0" prefWidth="100.0" style="-jfx-selected-color: #ff6a80;" text="Men" HBox.hgrow="ALWAYS" />
-                                          <JFXRadioButton fx:id="kidsRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="31.0" prefWidth="100.0" text="Kids" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="kidsRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="31.0" prefWidth="100.0" style="-jfx-selected-color: #ff6a80;" text="Kids" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
-                                    <JFXRadioButton fx:id="womenRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="37.0" prefWidth="230.0" text="Women" VBox.vgrow="ALWAYS" />
+                                    <JFXRadioButton fx:id="womenRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="37.0" prefWidth="230.0" style="-jfx-selected-color: #ff6a80;" text="Women" VBox.vgrow="ALWAYS" />
                                  </children>
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding>
                               </VBox>
-                              <VBox disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                              <VBox fx:id="vBox2" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding>
@@ -72,17 +128,17 @@
                                     <JFXRadioButton fx:id="girlsRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Girls" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
-                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                              <VBox fx:id="vBox3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                  <children>
                                     <HBox prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <JFXRadioButton fx:id="summerRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Summer" HBox.hgrow="ALWAYS" />
-                                          <JFXRadioButton fx:id="seasonalRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Seasonal" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="summerRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" style="-jfx-selected-color: #ff6a80;" text="Summer" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="seasonalRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" style="-jfx-selected-color: #ff6a80;" text="Seasonal" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <JFXRadioButton fx:id="winterRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Winter" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="winterRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" style="-jfx-selected-color: #ff6a80;" text="Winter" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -90,18 +146,18 @@
                                     <Insets left="5.0" />
                                  </padding>
                               </VBox>
-                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                              <VBox fx:id="vBox4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="180.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                  <children>
                                     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <JFXRadioButton fx:id="darkRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Dark" HBox.hgrow="ALWAYS" />
-                                          <JFXRadioButton fx:id="unusualRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" text="Unusual" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="darkRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" style="-jfx-selected-color: #ff6a80;" text="Dark" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="unusualRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" style="-jfx-selected-color: #ff6a80;" text="Unusual" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="211.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <JFXRadioButton fx:id="brightRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="37.0" prefWidth="78.0" text="Bright" HBox.hgrow="ALWAYS" />
-                                          <JFXRadioButton fx:id="unspecifiedRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="37.0" prefWidth="80.0" text="Unspecified" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="brightRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="37.0" prefWidth="78.0" style="-jfx-selected-color: #ff6a80;" text="Bright" HBox.hgrow="ALWAYS" />
+                                          <JFXRadioButton fx:id="unspecifiedRb" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#filterSelection" prefHeight="37.0" prefWidth="80.0" style="-jfx-selected-color: #ff6a80;" text="Unspecified" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -111,8 +167,8 @@
                               </VBox>
                               <VBox alignment="BOTTOM_CENTER" prefHeight="60.0" prefWidth="156.0" spacing="10.0" style="-fx-background-color: #FFCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <JFXTextField />
-                                    <JFXButton alignment="BOTTOM_CENTER" text="Search" />
+                                    <JFXTextField fx:id="searchTf" alignment="CENTER" onKeyPressed="#searchActionK" />
+                                    <JFXButton alignment="BOTTOM_CENTER" onAction="#searchActionM" text="Search" />
                                  </children>
                                  <padding>
                                     <Insets left="5.0" right="5.0" />
@@ -120,92 +176,161 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <TableView fx:id="sellTable" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="511.0" prefWidth="568.0" stylesheets="@StyleSheet.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
-                           <columns>
-                              <TableColumn fx:id="nameCol" editable="false" maxWidth="1.7976931348623157E308" prefWidth="210.0" text="Name" />
-                              <TableColumn fx:id="qteCol" maxWidth="1.7976931348623157E308" prefWidth="180.0" text="Available Quantity" />
-                              <TableColumn fx:id="priceCol" maxWidth="1.7976931348623157E308" prefWidth="195.0" resizable="false" text="Price (10 units)" />
-                           </columns>
+                        <VBox alignment="TOP_CENTER" style="-fx-background-color: #CCCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                            <GridPane.margin>
                               <Insets left="20.0" />
                            </GridPane.margin>
-                        </TableView>
-                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #CCCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="24.0" prefWidth="531.0" style="-fx-background-color: #ff80a1;">
+                              <HBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="580.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label text="Select from the options below to finish the sell procedure">
+                                    <Label text="1. Select an item from table below to display it to the right" textFill="#4a4a4a">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="117.0" prefWidth="531.0">
+                              <TableView fx:id="sellTable" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="461.0" prefWidth="580.0" stylesheets="@StyleSheet.css" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn fx:id="nameCol" editable="false" maxWidth="1.7976931348623157E308" prefWidth="200.0" resizable="false" text="Name" />
+                                    <TableColumn fx:id="qteCol" maxWidth="1.7976931348623157E308" prefWidth="190.0" resizable="false" text="Available Quantity" />
+                                    <TableColumn fx:id="priceCol" maxWidth="1.7976931348623157E308" prefWidth="224.0" resizable="false" text="Price (10 units)" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #CCCCFF;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="24.0" prefWidth="511.0">
                                  <children>
-                                    <ImageView fitHeight="166.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label text="2. Select from the options below to finish the sell procedure" textFill="#4d4d4d">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="75.0" prefWidth="523.0" spacing="50.0">
+                              <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="117.0" prefWidth="531.0" stylesheets="@StyleSheet.css" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="79.0" prefWidth="256.0" HBox.hgrow="ALWAYS">
+                                    <ImageView id="imv" fx:id="sellImv" fitHeight="166.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/add-image.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" maxHeight="120.0" maxWidth="1.7976931348623157E308" prefHeight="75.0" prefWidth="523.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="79.0" prefWidth="256.0" spacing="10.0" style="-fx-background-color: #efefff;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                          <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="256.0" text="Available Quantity" HBox.hgrow="ALWAYS" />
+                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="256.0" text="Available Quantity" textFill="#575757" HBox.hgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font></Label>
                                              </children>
                                           </HBox>
                                           <HBox prefHeight="133.0" prefWidth="256.0">
                                              <children>
-                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" HBox.hgrow="ALWAYS" />
+                                                <Label fx:id="availableQte" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="44.0" prefWidth="86.0" style="-fx-background-radius: 8px;" text="0" textFill="#5b5b5b" HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets left="80.0" right="80.0" />
+                                                   </HBox.margin>
+                                                   <font>
+                                                      <Font size="22.0" />
+                                                   </font></Label>
                                              </children>
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="252.0" HBox.hgrow="ALWAYS">
+                                    <HBox alignment="CENTER" prefHeight="75.0" prefWidth="136.0" style="-fx-background-color: #efefff;" styleClass="up2" stylesheets="@StyleSheet.css">
                                        <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                          <ImageView>
+                                             <image>
+                                                <Image url="@../image/justice.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="252.0" spacing="10.0" style="-fx-background-color: #efefff;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="235.0" VBox.vgrow="ALWAYS">
                                              <children>
-                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="256.0" text="Needed Quantity" />
+                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="14.0" prefWidth="235.0" text="Needed Quantity" textFill="#4d4d4d" HBox.hgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font></Label>
                                              </children>
                                           </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                          <HBox prefHeight="46.0" prefWidth="235.0">
                                              <children>
-                                                <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="&lt;" HBox.hgrow="ALWAYS" />
-                                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="0" HBox.hgrow="ALWAYS" />
-                                                <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="&gt;" HBox.hgrow="ALWAYS" />
+                                                <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#decreaseQte" prefHeight="45.0" prefWidth="0.0" ripplerFill="#1a2e6b" text="&lt;" HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                   <font>
+                                                      <Font name="System Bold" size="15.0" />
+                                                   </font></JFXButton>
+                                                <Label prefHeight="45.0" prefWidth="37.0" text="  " />
+                                                <Label fx:id="neededQte" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="76.0" style="-fx-background-radius: 8px;" text="0" textFill="#464646" HBox.hgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="22.0" />
+                                                   </font></Label>
+                                                <Label prefHeight="45.0" prefWidth="33.0" text="  " />
+                                                <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#increaseQte" prefHeight="45.0" prefWidth="30.0" ripplerFill="#1a2e6b" text="&gt;" HBox.hgrow="ALWAYS">
+                                                   <font>
+                                                      <Font name="System Bold" size="15.0" />
+                                                   </font></JFXButton>
                                              </children>
                                           </HBox>
                                        </children>
                                     </VBox>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="523.0">
+                              <HBox alignment="CENTER" maxHeight="150.0" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="523.0" style="-fx-background-color: #efefff;" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="64.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                    <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="64.0" prefWidth="100.0" style="-fx-background-color: #efefff;" styleClass="up2" stylesheets="@StyleSheet.css" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Price" VBox.vgrow="ALWAYS" />
-                                          <JFXTextField prefHeight="31.0" prefWidth="523.0" />
+                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Price" textFill="#515151" VBox.vgrow="ALWAYS">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font></Label>
+                                          <JFXTextField fx:id="priceTf" alignment="CENTER" editable="false" prefHeight="31.0" prefWidth="306.0" />
                                        </children>
                                        <padding>
-                                          <Insets bottom="20.0" left="30.0" right="30.0" />
+                                          <Insets bottom="20.0" left="150.0" right="150.0" />
                                        </padding>
                                     </VBox>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="35.0" prefWidth="531.0">
+                              <HBox alignment="CENTER" maxHeight="100.0" maxWidth="1.7976931348623157E308" prefHeight="54.0" prefWidth="523.0" style="-fx-background-color: #efefff;" styleClass="up2" stylesheets="@StyleSheet.css" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <JFXButton text="Confirm" />
+                                    <JFXButton maxHeight="1.7976931348623157E308" maxWidth="200.0" prefHeight="54.0" prefWidth="87.0" ripplerFill="#1a2e6b" style="-fx-background-color: #e0e0ff;" text="Confirm" textFill="#575757" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></JFXButton>
                                  </children>
                               </HBox>
                            </children>
                            <padding>
-                              <Insets top="1.0" />
+                              <Insets left="10.0" right="10.0" top="1.0" />
                            </padding>
                            <GridPane.margin>
                               <Insets right="20.0" />
                            </GridPane.margin>
                         </VBox>
+                        <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                           <children>
+                              <JFXButton onAction="#goFullScreen" text="Full" />
+                           </children>
+                        </HBox>
                      </children>
                      <StackPane.margin>
                         <Insets />
@@ -229,18 +354,27 @@
                <font>
                   <Font size="22.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0">
+                     <image>
+                        <Image url="@../image/stats.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Advance" textFill="WHITE">
+            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="156.0" text="Advance" textFill="WHITE" HBox.hgrow="SOMETIMES">
                <font>
                   <Font size="22.0" />
                </font>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@../image/cogwheels.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
-            <JFXButton fx:id="testLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Test" textFill="WHITE">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </JFXButton>
-            <HBox fx:id="initialPos" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <HBox fx:id="initialPos" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -248,10 +382,17 @@
                   <Insets right="20.0" />
                </padding>
                <children>
-                  <JFXButton fx:id="dropDownBtn" onAction="#openOption" ripplerFill="WHITE" text="\@" textFill="WHITE">
+                  <JFXButton fx:id="dropDownBtn" contentDisplay="GRAPHIC_ONLY" onAction="#openOption" ripplerFill="WHITE" text=" " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="35.0">
+                           <image>
+                              <Image url="@../image/identity.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </JFXButton>
                </children>
             </HBox>

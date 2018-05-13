@@ -10,6 +10,13 @@ and open the template in the editor.
 *{
     -fx-first : whitesmoke;
 }
+#qte{
+    -fx-background-image: url("/image/justice.png");
+    -fx-background-repeat: space;
+    -fx-background-color: -fx-first;
+    -fx-background-size: stretch;
+    -fx-background-position: top left;
+}
 .Men_Style{
     -fx-background-color:  #e3e0ff;
     -fx-background-radius: 4.0;
@@ -62,6 +69,10 @@ and open the template in the editor.
     -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 5.0, 0.7, 0.0,1.5);
     /*-fx-effect: dropshadow(gaussian , red, 10, 0.7 , 0.0, 1.5);*/
     -fx-padding: 16 16 16 16;
+}
+#imv{
+    -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 5.0, 0.7, 0.0,1.5);
+    -fx-background-radius: 4.0;
 }
 .draw{
     -fx-background-color: -fx-first;

@@ -34,13 +34,20 @@ public class UserDAO {
         }
     }
     
-    public static User getUser(String id, String pwd) {
+    public static User getUser(String id, String pwd, char type) {
         User u = null;
         session = HibernateUtil.getSessionFactory().openSession();
-        Query req = session.createQuery("from User where id = '" + id + "' and password = '" + pwd + "'");
+        Query req = session.createQuery("from User where id = '" + id + "' and password = '" + pwd + "' and type = '"+type+"'");
         u = (User) req.uniqueResult();
         session.close();
         return u;
+    }
+    public static boolean changePwd(String id, String pwd){        
+        session = HibernateUtil.getSessionFactory().openSession();
+        Query req = session.createQuery("Update User set password = '"+pwd+"' where id = '"+id+"'");
+        req.executeUpdate();
+        session.close();
+        return true;
     }
     
     public static List<User> getAdmin(char type) {

@@ -5,6 +5,8 @@
  */
 package controller;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -14,6 +16,7 @@ import javafx.beans.property.StringProperty;
  */
 public class FirstModel {
      private final StringProperty text = new SimpleStringProperty();
+     private final BooleanProperty stat = new SimpleBooleanProperty();
 
     public StringProperty textProperty() {
         return text ;
@@ -25,5 +28,16 @@ public class FirstModel {
 
     public final void setText(String text) {
         textProperty().set(text);
+    }
+    public BooleanProperty statProperty() {
+        return stat ;
+    }
+
+    public final boolean getStat() {
+        return statProperty().get();
+    }
+
+    public final void setStat(boolean stat) {
+        statProperty().set(stat);
     }
 }
