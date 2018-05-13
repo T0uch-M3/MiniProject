@@ -4,6 +4,8 @@
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,68 +15,46 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatisticScreenController">
+<StackPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="dropDownBg" onMouseClicked="#sendBackOptions" prefHeight="200.0" prefWidth="200.0">
          <children>
             <JFXDrawer fx:id="optionDrawer" direction="TOP" layoutX="995.0" layoutY="-83.0" maxHeight="-Infinity" maxWidth="180.0" prefHeight="42.0" prefWidth="180.0" resizableOnDrag="true" rotate="180.0" />
          </children>
       </Pane>
-      <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0">
+      <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #e6e6fa;">
          <center>
             <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane prefHeight="668.0" prefWidth="1200.0">
+                  <GridPane prefHeight="658.0" prefWidth="1200.0" style="-fx-background-color: #e6e6fa;">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="630.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="10.0" prefWidth="15.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="20.0" prefWidth="20.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="630.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="446.0" minHeight="10.0" prefHeight="308.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="8.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="239.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="7.0" prefHeight="14.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="446.0" minHeight="10.0" prefHeight="313.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="0.0" prefHeight="14.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="267.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" style="-fx-background-color: pink;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="2">
-                           <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: aqua;" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Label prefHeight="49.0" prefWidth="154.0" text="Top custemers " />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: aqua;" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Label prefHeight="49.0" prefWidth="154.0" text="Low costomers" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" style="-fx-background-color: pink;" styleClass="up2" stylesheets="@StyleSheet.css">
-                           <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: aqua;" HBox.hgrow="ALWAYS" />
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: aqua;" HBox.hgrow="ALWAYS" />
-                           </children>
-                        </HBox>
-                        <GridPane styleClass="up2" stylesheets="@StyleSheet.css" GridPane.rowIndex="2">
+                        <GridPane prefHeight="288.0" prefWidth="585.0" style="-fx-background-color: #87E7A4;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.rowIndex="1">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="286.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="89.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="188.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="57.0" minHeight="0.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="180.0" minHeight="6.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: teal;" GridPane.columnSpan="2">
+                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e7a487;" GridPane.columnSpan="2">
                                  <children>
-                                    <Label prefHeight="32.0" prefWidth="612.0" text="Most selling Shoes untill this date" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="lab1" prefHeight="19.0" prefWidth="575.0" text="Most selling Shoes to this date" textFill="WHITE" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font size="19.0" />
                                        </font>
@@ -87,37 +67,116 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" prefHeight="79.0" prefWidth="71.0" style="-fx-background-color: #b2f0c4;" text="1." HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="topSell1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="31.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" prefHeight="100.0" prefWidth="76.0" style="-fx-background-color: #b2f0c4;" text="2." HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="topSell2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="31.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" prefHeight="102.0" prefWidth="69.0" style="-fx-background-color: #b2f0c4;" text="3." HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="topSell3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="31.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
                            </children>
                         </GridPane>
-                        <GridPane styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <GridPane style="-fx-background-color: #87E7A4;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="2" GridPane.rowIndex="1">
                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="88.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="188.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="36.0" minHeight="0.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="254.0" minHeight="3.0" prefHeight="81.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="273.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="273.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: teal;" GridPane.columnSpan="2" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #e7a487;" GridPane.columnSpan="3">
+                                 <children>
+                                    <Label fx:id="lab2" prefHeight="39.0" prefWidth="585.0" text="Highest Target seller" textFill="WHITE">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children></HBox>
+                              <JFXButton fx:id="topPos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="  " GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="middlePos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="   " GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="lowPos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="   " GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #b2f0c4;" GridPane.rowIndex="3" />
+                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #b2f0c4;" text="1^" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="44.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #b2f0c4;" text="2^" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="44.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #b2f0c4;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #b2f0c4;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #b2f0c4;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <GridPane styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                        <GridPane alignment="CENTER" style="-fx-background-color: #87E7A4;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="276.0" />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints maxHeight="89.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="197.0" minHeight="10.0" prefHeight="193.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="89.0" minHeight="0.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="197.0" minHeight="10.0" prefHeight="62.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: teal;" GridPane.columnSpan="2">
+                              <HBox prefHeight="56.0" prefWidth="585.0" style="-fx-background-color: #e7a487;" GridPane.columnSpan="2">
                                  <children>
-                                    <Label prefHeight="32.0" prefWidth="612.0" text="Low Stock on these Shoes" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="lab3" prefHeight="32.0" prefWidth="612.0" text="Low Stocks" textFill="WHITE" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font size="19.0" />
                                        </font>
@@ -130,19 +189,128 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" prefHeight="78.0" prefWidth="68.0" style="-fx-background-color: #b2f0c4;" text="2." HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="lowStock2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #b2f0c4;" text="3." HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="lowStock3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="522.0" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" prefHeight="73.0" prefWidth="81.0" style="-fx-background-color: #b2f0c4;" text="1." HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="lowStock1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="522.0" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
                            </children>
                         </GridPane>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="585.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                        <HBox alignment="BOTTOM_RIGHT" prefHeight="22.0" prefWidth="585.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <children>
-                              <JFXButton fx:id="btnFullScreen" onAction="#goFullScreen" text="Full" />
+                              <JFXButton fx:id="btnFullScreen" onAction="#goFullScreen" prefHeight="29.0" prefWidth="43.0" text="Full" />
                            </children>
-                           <padding>
-                              <Insets bottom="10.0" />
-                           </padding>
                         </HBox>
+                        <GridPane style="-fx-background-color: #87E7A4;" styleClass="up2" stylesheets="@StyleSheet.css" GridPane.rowIndex="3">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="287.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="89.0" minHeight="0.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="197.0" minHeight="0.0" prefHeight="68.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="69.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="57.0" valignment="CENTER" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <HBox prefHeight="58.0" prefWidth="585.0" style="-fx-background-color: #e7a487;" GridPane.columnSpan="2">
+                                 <children>
+                                    <Label fx:id="lab4" prefHeight="43.0" prefWidth="575.0" text="High Stocks" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" prefHeight="79.0" prefWidth="82.0" style="-fx-background-color: #b2f0c4;" text="1." HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="topStock1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="44.0" prefWidth="522.0" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" prefHeight="80.0" prefWidth="72.0" style="-fx-background-color: #b2f0c4;" text="2." HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="topStock2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                 <children>
+                                    <JFXButton maxHeight="1.7976931348623157E308" style="-fx-background-color: #b2f0c4;" text="3." HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="topStock3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </GridPane>
                      </children>
                      <padding>
-                        <Insets left="10.0" right="10.0" top="10.0" />
+                        <Insets left="20.0" right="20.0" top="10.0" />
                      </padding>
                      <StackPane.margin>
                         <Insets />
@@ -157,25 +325,34 @@
       </BorderPane>
       <HBox fx:id="topHbox" maxHeight="45.0" minHeight="40.0" prefHeight="40.0" prefWidth="1200.0" spacing="3.0" style="-fx-background-color: #345466;" StackPane.alignment="TOP_CENTER">
          <children>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#goToStock" prefHeight="85.0" prefWidth="115.0" ripplerFill="#262d46" text="Stock" textFill="WHITE">
+            <JFXButton fx:id="sellBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#goToSell" prefHeight="48.0" prefWidth="151.0" ripplerFill="#262d46" text="Sell" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="statBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Stats" textFill="WHITE">
+            <JFXButton fx:id="statBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="172.0" style="-fx-background-color: #262d46;" text="Stats" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0">
+                     <image>
+                        <Image url="@../image/stats.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Advance" textFill="WHITE">
+            <JFXButton fx:id="advanceBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="182.0" text="Advance" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
-            </JFXButton>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="..." textFill="WHITE">
-               <font>
-                  <Font size="22.0" />
-               </font>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@../image/cogwheels.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
             <HBox fx:id="initialPos" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <HBox.margin>
@@ -185,10 +362,17 @@
                   <Insets right="20.0" />
                </padding>
                <children>
-                  <JFXButton fx:id="dropDownBtn" onAction="#openOption" ripplerFill="WHITE" text="\@" textFill="WHITE">
+                  <JFXButton fx:id="dropDownBtn" contentDisplay="GRAPHIC_ONLY" onAction="#openOption" prefHeight="46.0" prefWidth="51.0" ripplerFill="WHITE" text="\@" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="38.0">
+                           <image>
+                              <Image url="@../image/identity.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </JFXButton>
                </children>
             </HBox>

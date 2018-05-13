@@ -6,6 +6,7 @@
 package controller;
 
 import DOA.MenDAO;
+import DOA.StatDAO;
 import DOA.UserDAO;
 import DOA.WomenDAO;
 import com.jfoenix.controls.JFXButton;
@@ -15,6 +16,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import static controller.NewLoginController.fullScreen;
 import enity.Men;
+import enity.Stat;
 import enity.Women;
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +32,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -107,8 +110,9 @@ public class SellScreenController implements Initializable {
     ToggleGroup tg2 = new ToggleGroup();
     ToggleGroup tg3 = new ToggleGroup();
     ToggleGroup tg4 = new ToggleGroup();
+    JFXRadioButton clone = null;
     boolean mbool = false, wBool = false, kBool = false, modelShow = false, stayPut = false;
-    Men m = new Men();
+    Men m = new Men();//this should contain the current selected instancem.
     Women w = new Women();
     Image sellImg = null;
     int nQte = 0;
@@ -121,8 +125,11 @@ public class SellScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fullScreen(true);
+        if (NewLoginController.fullScreen) {
+            fullScreenPart2();
+        }
 
+//        fullScreen(true);
         fm.statProperty().addListener((obs, oldStat, newStat) -> {
             if (newStat) {
                 changePwdAction();
@@ -166,9 +173,10 @@ public class SellScreenController implements Initializable {
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         sellTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("test something should get selectet");
+
             neededQte.setText("0");
             priceTf.setText("0");
+            nbrUnit = 0;
             if (mbool) {
                 m = (Men) newValue;
             }
@@ -236,7 +244,11 @@ public class SellScreenController implements Initializable {
 
     @FXML
     public void filterSelection(ActionEvent event) {
-        JFXRadioButton clone = (JFXRadioButton) event.getSource();
+        clone = (JFXRadioButton) event.getSource();
+        startFilter();
+    }
+
+    public void startFilter() {
 
         if (menRb.isSelected()) {
             mbool = true;
@@ -645,19 +657,20 @@ public class SellScreenController implements Initializable {
     }
 
     public void selectionMeth() {
-
+        System.out.println("test selection started");
         if (mbool && m != null) {
             sellImg = new Image(m.getPictureUrl());
             sellImv.setImage(sellImg);
             availableQte.setText(String.valueOf(m.getQte()));
             selectedPrice = m.getPrice();
-//            priceTf.setText(String.valueOf(m.getPrice()));
+            priceTf.setText(String.valueOf(m.getPrice()));
         }
         if (wBool && w != null) {
             sellImg = new Image(w.getPictureUrl());
             sellImv.setImage(sellImg);
             availableQte.setText(String.valueOf(w.getQte()));
             selectedPrice = w.getPrice();
+            priceTf.setText(String.valueOf(w.getPrice()));
         }
     }
 
@@ -798,6 +811,27 @@ public class SellScreenController implements Initializable {
         fullScreen(false);
     }
 
+    public void fullScreenPart2() {
+        Insets ins = new Insets(0, 30, 0, 0);
+        initialPos.setPadding(ins);
+        dropDownBtn.setLayoutX(1700);
+
+        optionDrawer.setPrefSize(230, 90);
+        optionDrawer.setMaxSize(230, 90);
+
+        optionDrawer.setLayoutX(1670);
+
+        sellTable.setPrefHeight(800);
+        nameCol.setPrefWidth(313);
+        qteCol.setPrefWidth(313);
+        priceCol.setPrefWidth(313);
+        sellImv.setFitHeight(330);
+        sellImv.setFitWidth(370);
+        //******addPane*************
+        Insets insAdd = new Insets(150, 25, 180, 25);
+
+    }
+
     public void fullScreen(boolean old) {//old value will indicate when it was fullscreen before or no
         if (!old) {
             if (NewLoginController.fullScreen) {
@@ -855,6 +889,76 @@ public class SellScreenController implements Initializable {
             } else {
                 MiniProject.stage.setFullScreen(false);
             }
+        }
+    }
+
+    @FXML
+    public void confirmSell(ActionEvent event) {
+        int result, newQte;
+        Stat s = null;
+        Stat s2;
+        if (mbool) {
+            try {
+                s = StatDAO.getStat(m.getName());
+                updateStat();
+                newQte = s.getQte() + Integer.valueOf(neededQte.getText());
+                StatDAO.updateStat(m.getName(), newQte);
+
+            } catch (NullPointerException ex) {
+                s2 = new Stat(m.getName(), Integer.valueOf(neededQte.getText()));
+                StatDAO.addStat(s2);
+            }
+
+            result = m.getQte() - Integer.valueOf(neededQte.getText());
+            MenDAO.saveChange(m.getName(), result, Float.valueOf(m.getPrice()));
+            startFilter();
+        }
+
+        if (wBool) {
+            try {
+                s = StatDAO.getStat(w.getName());
+                updateStat();
+                newQte = s.getQte() + Integer.valueOf(neededQte.getText());
+                StatDAO.updateStat(w.getName(), newQte);
+
+            } catch (NullPointerException ex) {
+                s2 = new Stat(w.getName(), Integer.valueOf(neededQte.getText()));
+                StatDAO.addStat(s2);
+            }
+            result = w.getQte() - Integer.valueOf(neededQte.getText());
+            WomenDAO.saveChange(w.getName(), result, Float.valueOf(w.getPrice()));
+            startFilter();
+        }
+        initSell();
+    }
+
+    public void initSell() {
+        sellImg = new Image("/image/add-image.png");
+        sellImv.setImage(sellImg);
+        nQte = 0;
+        neededQte.setText("0");
+        availableQte.setText("0");
+        priceTf.setText("0");
+    }
+
+    @FXML
+    public void goToStat(ActionEvent event) throws IOException {
+        FXMLLoader statLoader = new FXMLLoader(getClass().getResource("/view/StatisticScreen.fxml"));
+        statLoader.setController(new StatisticScreenController(fm));
+        Parent root = statLoader.load();
+        MiniProject.stage.getScene().setRoot(root);
+    }
+
+    public void updateStat() {
+        Stat s = null;
+        if (wBool) {
+            s = StatDAO.getStat("Women");
+            StatDAO.updateStat("Women", s.getQte() + 1);
+        }
+        if (mbool) {
+            System.out.println("inside men");
+            s = StatDAO.getStat("Men");
+            StatDAO.updateStat("Men", s.getQte() + 1);
         }
     }
 

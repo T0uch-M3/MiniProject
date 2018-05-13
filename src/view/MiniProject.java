@@ -5,12 +5,14 @@
  */
 package view;
 
+import DOA.StatDAO;
 import controller.FirstModel;
 import controller.LoginScreenController;
 import controller.NewLoginController;
 import controller.OptionDropDownController;
 import controller.SellScreenController;
 import controller.StockScreenController;
+import enity.Stat;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -67,24 +69,38 @@ public class MiniProject extends Application {
         primaryStage.setHeight(720);
         primaryStage.setFullScreenExitHint("");
         primaryStage.setResizable(false);
+        
+        wDB();
+        mDB();
+        
         primaryStage.show();
         primaryStage.setOnCloseRequest((WindowEvent ev) -> {
             System.exit(0);
         });
 
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("StockScreen.fxml"));
-//      loader.setController(new LoginScreenController());
-//        Parent root = loader.load();
-//        Scene scene = new Scene(root);
-//        scene.setFill(Color.BISQUE);
-//        scene2 = scene;
-//        primaryStage.initStyle(StageStyle.UTILITY);
-//        primaryStage.setScene(scene);
-//        primaryStage.setWidth(1200);
-//        primaryStage.setHeight(720);
-//        primaryStage.setFullScreenExitHint("");
-//        primaryStage.setResizable(false);
-//        primaryStage.show();
+    }
+    public void wDB(){
+        Stat s = null;
+        
+        try {
+                s = StatDAO.getStat("Women");
+                 s.getName();
+            } catch (NullPointerException ex) {
+                s = new Stat("Women", 0);
+                StatDAO.addStat(s);
+            }
+    }
+    public void mDB(){
+        Stat s = null;
+        
+        try {
+                s = StatDAO.getStat("Men");
+                 s.getName();
+            } catch (NullPointerException ex) {
+                System.out.println("making men");
+                s = new Stat("Men", 0);
+                StatDAO.addStat(s);
+            }
     }
 
 }

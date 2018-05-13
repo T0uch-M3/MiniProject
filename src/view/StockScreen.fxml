@@ -193,7 +193,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="77.0" prefWidth="350.0" style="-fx-background-color: FFE6CC;" styleClass="up" stylesheets="@StyleSheet.css">
                                  <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="72.0" prefWidth="347.0" style="-fx-background-color: #147e81; -fx-background-radius: 8px;" text="MEN" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="menLab" alignment="CENTER" contentDisplay="CENTER" prefHeight="72.0" prefWidth="347.0" style="-fx-background-color: #147e81; -fx-background-radius: 8px;" text="MEN" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font size="49.0" />
                                        </font>
@@ -208,18 +208,7 @@
                               </HBox>
                               <ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" prefHeight="398.0" prefWidth="350.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <TilePane fx:id="tilePane1" hgap="3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumns="3" prefHeight="361.0" prefRows="3" prefWidth="350.0" style="-fx-background-color: #e6e6fa;" stylesheets="@StyleSheet.css" vgap="3.0">
-                                       <children>
-                                          <JFXButton contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="109.0" styleClass="buttons" text="ButtonTest" textFill="#363232">
-                                             <graphic>
-                                                <ImageView fitHeight="64.0" fitWidth="92.0">
-                                                   <image>
-                                                      <Image url="@../image/icons8_Women%60s_Shoe_64px.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </JFXButton>
-                                       </children>
+                                    <TilePane fx:id="tilePane1" hgap="3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumns="3" prefHeight="800.0" prefRows="3" prefWidth="350.0" style="-fx-background-color: #e6e6fa;" stylesheets="@StyleSheet.css" vgap="3.0">
                                        <padding>
                                           <Insets left="6.0" right="5.0" top="20.0" />
                                        </padding>
@@ -243,7 +232,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="77.0" prefWidth="350.0" style="-fx-background-color: FFE6CC;" styleClass="up" stylesheets="@StyleSheet.css">
                                  <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="347.0" style="-fx-background-color: #ff6a80; -fx-background-radius: 6px;" text="WOMEN" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="womenLab" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="347.0" style="-fx-background-color: #ff6a80; -fx-background-radius: 6px;" text="WOMEN" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font size="49.0" />
                                        </font>
@@ -258,7 +247,7 @@
                               </HBox>
                               <ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <TilePane fx:id="tilePane2" hgap="3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumns="3" prefHeight="344.0" prefRows="3" prefWidth="350.0" style="-fx-background-color: #e6e6fa;" vgap="3.0">
+                                    <TilePane fx:id="tilePane2" hgap="3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumns="3" prefHeight="800.0" prefRows="3" prefWidth="350.0" style="-fx-background-color: #e6e6fa;" vgap="3.0">
                                        <padding>
                                           <Insets left="6.0" right="5.0" top="20.0" />
                                        </padding>
@@ -282,7 +271,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="77.0" prefWidth="350.0" style="-fx-background-color: FFE6CC;" styleClass="up" stylesheets="@StyleSheet.css">
                                  <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="347.0" style="-fx-background-color: #a0db8e; -fx-background-radius: 6px;" text="KIDS" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <Label fx:id="kidsLab" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="347.0" style="-fx-background-color: #a0db8e; -fx-background-radius: 6px;" text="KIDS" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font size="49.0" />
                                        </font>
@@ -297,7 +286,7 @@
                               </HBox>
                               <ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <TilePane fx:id="tilePane3" hgap="3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="361.0" prefWidth="350.0" style="-fx-background-color: #e6e6fa;" vgap="3.0">
+                                    <TilePane fx:id="tilePane3" hgap="3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="350.0" style="-fx-background-color: #e6e6fa;" vgap="3.0">
                                        <padding>
                                           <Insets left="6.0" right="5.0" top="20.0" />
                                        </padding>
@@ -335,17 +324,12 @@
                   <Font size="22.0" />
                </font>
             </JFXButton>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#goToStats" prefHeight="85.0" prefWidth="115.0" text="Stats" textFill="WHITE">
+            <JFXButton fx:id="btnStat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="149.0" text="Stats" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
             </JFXButton>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Advance" textFill="WHITE">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="testLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Test" textFill="WHITE">
+            <JFXButton fx:id="btnAdvance" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="115.0" text="Advance" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
@@ -358,10 +342,17 @@
                   <Insets right="20.0" />
                </padding>
                <children>
-                  <JFXButton fx:id="dropDownBtn" onAction="#openOption" ripplerFill="WHITE" text="\@" textFill="WHITE">
+                  <JFXButton fx:id="dropDownBtn" contentDisplay="GRAPHIC_ONLY" onAction="#openOption" ripplerFill="WHITE" text="\@" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="35.0">
+                           <image>
+                              <Image url="@../image/identity.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </JFXButton>
                </children>
             </HBox>

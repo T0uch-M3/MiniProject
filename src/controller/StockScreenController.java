@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,11 +75,11 @@ public class StockScreenController implements Initializable {
     @FXML
     Pane dropDownBg;
     @FXML
-    JFXButton btnFullScreen, dropDownBtn, stockBtn, btnIncrease, btnDecrease, btnClone;
+    JFXButton btnFullScreen, dropDownBtn, stockBtn, btnIncrease, btnDecrease, btnClone, btnStat, btnAdvance;
     @FXML
     HBox initialPos, initialPosFSBtn, topHbox, anHbox;
     @FXML
-    Label qteProp, addQte, messageLab, genderLab;
+    Label qteProp, addQte, messageLab, genderLab, menLab, womenLab, kidsLab;
     @FXML
     public JFXButton testLabel;//the language button
     @FXML
@@ -110,6 +111,9 @@ public class StockScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if (NewLoginController.fullScreen) {
+            fullScreenPart2();
+        }
         //get shoes from db and show them as buttons
         displayShoes();
 //        stockBtn.setFocusTraversable(true);
@@ -117,7 +121,9 @@ public class StockScreenController implements Initializable {
 
         //this for options drawer values
         fm.textProperty().addListener((obs, oldText, newText)
-                -> testLabel.setText(newText));
+                -> {
+            changeLanguage(newText);
+        });
         //the less u see the longer u live
         optionDrawer.setVisible(false);
         //u can't live blind forever
@@ -163,6 +169,24 @@ public class StockScreenController implements Initializable {
             Insets ins = new Insets(0, 10, 0, 0);
             initialPos.setPadding(ins);
         });
+    }
+    public void changeLanguage(String lan){
+        if(lan.equals("AR")){
+            stockBtn.setText("مخازن");
+            btnAdvance.setText("إعدادات");
+            btnStat.setText("إحصائيات");
+            menLab.setText("رجال");
+            womenLab.setText("نساء");
+            kidsLab.setText("أطفال");
+        }
+        if(lan.equals("EN")){
+            stockBtn.setText("Stock");
+            btnAdvance.setText("Advance");
+            btnStat.setText("Stats");
+            menLab.setText("MEM");
+            womenLab.setText("WOMEN");
+            kidsLab.setText("KIDS");
+        }
     }
 
     public void fillComboBox() {
@@ -300,6 +324,10 @@ public class StockScreenController implements Initializable {
 
     @FXML
     public void goFullScreen(ActionEvent event) {
+        handleFullScreen();
+    }
+
+    public void handleFullScreen() {
         if (NewLoginController.fullScreen) {
             MiniProject.stage.setFullScreen(false);
             NewLoginController.fullScreen = false;
@@ -344,6 +372,28 @@ public class StockScreenController implements Initializable {
             shoesPicture.setFitHeight(200);
             shoesPicture.setFitWidth(300);
         }
+    }
+
+    public void fullScreenPart2() {
+        resizeUp(tilePane1, true);
+        resizeUp(tilePane2, true);
+        resizeUp(tilePane3, true);
+
+        Insets ins = new Insets(0, 30, 0, 0);
+        initialPos.setPadding(ins);
+        dropDownBtn.setLayoutX(1700);
+
+        optionDrawer.setPrefSize(230, 90);
+        optionDrawer.setMaxSize(230, 90);
+
+        optionDrawer.setLayoutX(1670);
+        //******addPane*************
+        Insets insAdd = new Insets(150, 25, 180, 25);
+        addPane.setPadding(insAdd);
+        addContainer.setSpacing(10);
+        //******Image in addPane*****
+        shoesPicture.setFitHeight(200);
+        shoesPicture.setFitWidth(300);
     }
 
     @FXML
@@ -494,6 +544,8 @@ public class StockScreenController implements Initializable {
     public void addPicture(MouseEvent event) throws MalformedURLException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Shoes Picture");
+        String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
+        fileChooser.setInitialDirectory(new File(currentPath));
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*jpg"));
         File selectedFile = fileChooser.showOpenDialog(null);
         File selectedFileInput = selectedFile;

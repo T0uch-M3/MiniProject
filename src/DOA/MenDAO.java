@@ -59,6 +59,14 @@ public class MenDAO {
         session.close();
         return l;
     }
+     public static List<Men> listMenStat() {//lol this sh** is working, who said can't find any ideas hahahaha
+        List<Men> l = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Query req = session.createQuery("from Men ORDER BY qte ASC");
+        l = req.list();
+        session.close();
+        return l;
+    }
     
     
     public static Men getMen(String name) {
@@ -69,6 +77,7 @@ public class MenDAO {
         session.close();
         return m;
     }
+    
 
     public static boolean saveChange(String name, int qte, float price) {
         session = HibernateUtil.getSessionFactory().openSession();

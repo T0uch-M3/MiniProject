@@ -5,11 +5,15 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import view.MiniProject;
 
 /**
  * FXML Controller class
@@ -46,12 +50,12 @@ public class OptionDropDownController implements Initializable {
 //        System.out.println("ARRRRR");
 //        StockScreenController p = new StockScreenController();
 //        p.testLabel.setText("AAAAAA");
-        fm.setText("اختبار");
+        fm.setText("AR");
     }
 
     @FXML
     public void toEnglish(ActionEvent event) {
-        fm.setText("Test");
+        fm.setText("EN");
     }
 
     public OptionDropDownController(FirstModel fm) {
@@ -74,6 +78,14 @@ public class OptionDropDownController implements Initializable {
 
     public void changeStat() {
 
+    }
+
+    @FXML
+    public void logoutAction(ActionEvent event) throws IOException {
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("/view/newLogin.fxml"));
+        loginLoader.setController(new NewLoginController(fm));
+        Parent root = loginLoader.load();
+        MiniProject.stage.getScene().setRoot(root);
     }
 
 }
