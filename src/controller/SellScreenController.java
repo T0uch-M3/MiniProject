@@ -73,6 +73,7 @@ public class SellScreenController implements Initializable {
     JFXButton sellBtn;
     @FXML
     Pane dropDownBg;
+    
     @FXML
     ImageView sellImv;
     ObservableList<Men> shoesList = FXCollections.observableArrayList();
@@ -810,7 +811,7 @@ public class SellScreenController implements Initializable {
     public void goFullScreen(ActionEvent event) {
         fullScreen(false);
     }
-
+   
     public void fullScreenPart2() {
         Insets ins = new Insets(0, 30, 0, 0);
         initialPos.setPadding(ins);
@@ -821,6 +822,7 @@ public class SellScreenController implements Initializable {
 
         optionDrawer.setLayoutX(1670);
 
+     
         sellTable.setPrefHeight(800);
         nameCol.setPrefWidth(313);
         qteCol.setPrefWidth(313);
